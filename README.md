@@ -26,6 +26,7 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 1. Make a sample of the `index.php` page.
 2. Create a **database connection** page.
 3. Create `register.php` page.
+    - Add a form with choosing: male, female, cat, other
 4. Create `login.php` page.
 5. Create `checklogin.php` page.
 5. Create `home.php` page.

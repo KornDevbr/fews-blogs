@@ -10,7 +10,7 @@
     <h1 align="center">Fews-Blogs</h1>
     <h2 align="center">Share us any of your thoughts</h2> </br> </br>
 
-    <a href="regitster.php">Register</a> </br>
+    <a href="register.php">Register</a> </br>
     <a href="login.php">Log In</a> </br>
 
     <form action="checklogin.php" method="post">
