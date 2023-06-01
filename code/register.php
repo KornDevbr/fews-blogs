@@ -9,10 +9,17 @@
 <body>
     <h1>Fews-Blogs Registration</h1>
     <p>Please fill the registration form</p> </br>
-    <from action="register.php" method="post">
+    <form action="register.php" method="post">
     Username <input type="text" name="username" required> </br>
     Password <input type="password" name="password" required> </br>
     Re-enter password <input type="password" name="password" required> </br>
-    Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg">
+    Gender
+        <input type="radio" name="gender" value="female">Female
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="cat">Cat
+        <input type="radio" name="gender" value="other">Other </br>
+    Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br>
+    <input type="submit" value="Register">
+    </form>
 </body>
 </html>
