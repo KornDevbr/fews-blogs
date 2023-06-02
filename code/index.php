@@ -10,13 +10,13 @@
     <h1 align="center">Fews-Blogs</h1>
     <h2 align="center">Share us any of your thoughts</h2> </br> </br>
 
-    <a href="register.php">Register</a> </br>
+    <a href="registration.php">Register</a> </br>
     <a href="login.php">Log In</a> </br>
 
     <form action="checklogin.php" method="post">
         Username <input type="text" name="username" required> </br>
         Password <input type="password"name="password" required> </br>
         <input type="submit" value="Log In">
-    </form> 
+    </form>
 </body>
 </html>
