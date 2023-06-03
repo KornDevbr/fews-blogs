@@ -9,10 +9,17 @@
 <body>
     <h1>Fews-Blogs Registration</h1>
     <p>Please fill the registration form</p> </br>
+
 <?php
     require('db_connection.php');
     // When form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
+        // Checking do password are different.
+        if ($_REQUEST['password'] != $_REQUEST['cpassword']) {
+            echo "<script>alert('Password and Confirmation password you inputed are different. They must be the same.') </script></br>";
+            echo "<script>window.location='registration.php'</script>";
+            exit();
+        }
         // Removes backslashes.
         $username   = stripslashes($_REQUEST['username']);
         // Escapes specail characters in a string.
@@ -21,12 +28,15 @@
         $email      = mysqli_real_escape_string($db_connection, $email);
         $password   = stripslashes($_REQUEST['password']);
         $password   = mysqli_real_escape_string($db_connection, $password);
+        $cpassword  = stripslashes($_REQUEST['cpassword']);
+        $gender     = 'other';
         $gender     = stripslashes($_REQUEST['gender']);
         $gender     = mysqli_real_escape_string($db_connection, $gender);
         $create_datetime = date("Y-m-d H:i:s");
+
         $query      = "INSERT into `users` (username, password, email, gender, create_datetime)
                         VALUES ('$username', '" . md5($password) . "', '$email', '$gender', '$create_datetime')";
-        $result     = mysqli_query($db_connection, $query);
+        $result     = mysqli_query($db_connection, $query);    
         if ($result) {
             echo "<div class='form'>
                     <h3>You are registered successfully.</h3><br/>
@@ -45,12 +55,12 @@
         <input type="text" name="username" placeholder="Username" required> </br>
         <input type="email" name="email" placeholder="Email" required> </br>
         <input type="password" name="password" placeholder="Password" required> </br>
-        <input type="password" name="password" placeholder="Re-enter password" required> </br>
+        <input type="password" name="cpassword" placeholder="Confirm password" required> </br>
         Gender
             <input type="radio" name="gender" value="female">Female
             <input type="radio" name="gender" value="male">Male
             <input type="radio" name="gender" value="cat">Cat
-            <input type="radio" name="gender" value="other">Other </br>
+            <input type="radio" name="gender" value="other" checked>Other </br>
         Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br>
         <input type="submit" name="submit" value="Register">
         <p class="link"><a href="login.php">Click to Login</a></p>
