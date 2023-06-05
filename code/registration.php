@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Fews-Blogs Registration</h1>
-    <p>Please fill the registration form</p> </br>
+    <h3>Please fill the registration form</h3> </br>
 
 <?php
     require('db_connection.php');
@@ -16,8 +16,8 @@
     if (isset($_REQUEST['username'])) {
         // Checking do password are different.
         if ($_REQUEST['password'] != $_REQUEST['cpassword']) {
-            echo "<script>alert('Password and Confirmation password you inputed are different. They must be the same.') </script></br>";
-            echo "<script>window.location='registration.php'</script>";
+            echo "<script> alert('Password and Confirmation password you inputed are different. They must be the same.') </script></br>";
+            echo "<script> window.location='registration.php' </script>";
             exit();
         }
         // Removes backslashes.
@@ -33,10 +33,25 @@
         $gender     = stripslashes($_REQUEST['gender']);
         $gender     = mysqli_real_escape_string($db_connection, $gender);
         $create_datetime = date("Y-m-d H:i:s");
+        // Checking does the given username already exist.
+        $get_user   = mysqli_query($db_connection, "SELECT * FROM users WHERE username='$username';");
+        if (mysqli_num_rows($get_user) > 0){
+            echo "<script> alert('This username already exists.') </script></br>";
+            echo "<script> window.location='registration.php' </script>";
+            exit();
+        }
+        // Checking does the given email already in use.
+        $get_email  = mysqli_query($db_connection, "SELECT * FROM users WHERE email='$email';");
+        if (mysqli_num_rows($get_email) > 0){
+            echo "<script> alert('This email already in use.') </script></br>";
+            echo "<script> window.location='registration.php' </script>";
+            exit();
+        }
 
         $query      = "INSERT into `users` (username, password, email, gender, create_datetime)
                         VALUES ('$username', '" . md5($password) . "', '$email', '$gender', '$create_datetime')";
         $result     = mysqli_query($db_connection, $query);    
+        
         if ($result) {
             echo "<div class='form'>
                     <h3>You are registered successfully.</h3><br/>
@@ -52,7 +67,7 @@
 ?>
     <form action="" method="post">
         <h1>Registration</h1>
-        <input type="text" name="username" placeholder="Username" required> </br>
+        <input type="text" name="username" placeholder="Username" value="<?php ?>" required> </br>
         <input type="email" name="email" placeholder="Email" required> </br>
         <input type="password" name="password" placeholder="Password" required> </br>
         <input type="password" name="cpassword" placeholder="Confirm password" required> </br>

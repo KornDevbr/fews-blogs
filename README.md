@@ -14,6 +14,7 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 ### Optional
 1. Tags for articles and possibility to sort articles by topics. Or pages with different topics.
 2. Articles must include possibility to add images.
+    - Use the same script for saving user avatars. (Optional)
 3. Login form on home page.
 4. ...
 
@@ -24,9 +25,9 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 
 ## Order of doing things
 1. Make a sample of the `index.php` page.
-2. Create a **database connection** page.
-3. Create `register.php` page.
-    - Add a form with choosing: male, female, cat, other
+2. ~~Create a **database connection** page.~~
+3. ~~Create `register.php` page.~~
+    - ~~Add a form with choosing: male, female, cat, other~~
 4. Create `login.php` page.
 5. Create `checklogin.php` page.
 5. Create `home.php` page.
