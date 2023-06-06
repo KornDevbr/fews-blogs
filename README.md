@@ -33,3 +33,8 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 5. Create `home.php` page.
 6. Create `edit_content.php` page.
 7. ...
+
+## For future (if there is time)
+1. Not removing data from fields while registration.
+2. Make avatar system.
+3. ...

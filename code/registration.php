@@ -78,7 +78,7 @@
             <input type="radio" name="gender" value="other" checked>Other </br>
         Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br>
         <input type="submit" name="submit" value="Register">
-        <p class="link"><a href="login.php">Click to Login</a></p>
+        <p class="link">Already registered? <a href="login.php">Login</a> to the website.</p>
     </form>
 <?php
     }
