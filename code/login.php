@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Fews-Blogs</title>
+    <title>Login | Fews Blogs</title>
 </head>
 <body>
     <h1>Login</h1>
@@ -26,8 +26,9 @@
                 // Redirect to user dashboard page.
                 header("Location: dashboard.php");
             } else {
-                echo "<h3>Incoorect Username or password.</h3></br>
-                      <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>";
+                echo "<script> alert('Incorrect Username or password') </script></br>";
+                echo "<script> window.location='login.php' </script>";
+                exit();
             }
         } else {
     ?>
@@ -40,6 +41,6 @@
     <?php        
         }
     ?>
-    <a href="index.php">Go back to home page</a>
+    <p>Go back to <a href="index.php">Home</a> page</a>
 </body>
 </html>

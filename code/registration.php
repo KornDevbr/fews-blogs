@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration | Fews-Blogs</title>
+    <title>Registration | Fews Blogs</title>
 </head>
 <body>
-    <h1>Fews-Blogs Registration</h1>
+    <h1>Fews Blogs Registration</h1>
     <h3>Please fill the registration form</h3> </br>
 
 <?php
@@ -78,7 +78,8 @@
             <input type="radio" name="gender" value="other" checked>Other </br>
         Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br>
         <input type="submit" name="submit" value="Register">
-        <p class="link">Already registered? <a href="login.php">Login</a> to the website.</p>
+        <p class="link">Already registered? <a href="login.php">Login</a> to the website</p>
+        <p> Go back to <a href="index.php">Home</a> page</p>
     </form>
 <?php
     }
