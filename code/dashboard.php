@@ -11,8 +11,10 @@ include("auth_session.php");
     <title>Dasboard | Fews Blogs</title>
 </head>
 <body>
-    <p>Hey, <?php echo $_SESSION['username']; ?>!</p>
-    <p>You are on the user dasboard page now.</p>
-    <p><a href="logout.php">Logout</a></p>
+    <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
+    <p align="right"><a href="logout.php">Logout</a></p>
+    <h2 align="center">What will you share with us today?</h2>
+    <a href="add_article.php">Add Article</a>
+    <p> Content list </p>
 </body>
 </html>

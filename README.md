@@ -25,7 +25,7 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 3. ...
 
 ## Order of doing things (Project Status)
-1. Make a sample of the `index.php` page.
+1. ~~Make a sample of the `index.php` page.~~ :white_check_mark:
 2. ~~Create a **database connection** page.~~ :white_check_mark:
 3. ~~Create `register.php` page.~~ :white_check_mark:
     - ~~Add a form with choosing: male, female, cat, other~~ :white_check_mark:
@@ -33,7 +33,7 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 5. ~~Create `logout.php` page.~~ :white_check_mark:
 6. Create `add_content.php` page.
 7. Create `edit_content.php` page.
-8. Create `delete_content.pho` page.
+8. Create `delete_content.php` page.
 9. Create `about_us.php` page.
 10. Create `home.php` page.
 11. ...
@@ -41,9 +41,10 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 ## Content creation pages must include:
 1. Add Article feature.
 2. Edit Article feature.
-3. List of user made Articles.
-4. Text area field.
-5. Publish checkbox.
-6. MYSQL table with articles.
-7. Tags system (experiment with database queries).
-8. ...
+3. Delete Article feature.
+4. List of user made Articles.
+5. Text area field.
+6. Publish checkbox.
+7. MYSQL table with articles.
+8. Tags system (experiment with database queries).
+9. ...
