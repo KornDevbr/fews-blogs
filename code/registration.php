@@ -67,7 +67,7 @@
 ?>
     <form action="" method="post">
         <h1>Registration</h1>
-        <input type="text" name="username" placeholder="Username" value="<?php ?>" required> </br>
+        <input type="text" name="username" placeholder="Username" required> </br>
         <input type="email" name="email" placeholder="Email" required> </br>
         <input type="password" name="password" placeholder="Password" required> </br>
         <input type="password" name="cpassword" placeholder="Confirm password" required> </br>

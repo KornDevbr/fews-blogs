@@ -15,6 +15,6 @@ include("auth_session.php");
     <p align="right"><a href="logout.php">Logout</a></p>
     <h2 align="center">What will you share with us today?</h2>
     <a href="add_article.php">Add Article</a>
-    <p> Content list </p>
+    <p> Your Articles </p>
 </body>
 </html>
