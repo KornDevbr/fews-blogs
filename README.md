@@ -17,26 +17,29 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
     - Use the same script for saving user avatars. (Optional)
 3. Login form on home page.
 4. Not removing data from fields while registration.
-5. ...
+5. Comments system.
+6. ...
 
 ## Features
 1. Databse with users creation.
 2. One page to connect a database for all pages.
 3. ...
 
-## Order of doing things (Project Status)
+## Order of doing things. Backend. (Project Status)
 1. ~~Make a sample of the `index.php` page.~~ :white_check_mark:
 2. ~~Create a **database connection** page.~~ :white_check_mark:
 3. ~~Create `register.php` page.~~ :white_check_mark:
     - ~~Add a form with choosing: male, female, cat, other~~ :white_check_mark:
 4. ~~Create `login.php` page.~~ :white_check_mark:
 5. ~~Create `logout.php` page.~~ :white_check_mark:
-6. Create `add_content.php` page.
-7. Create `edit_content.php` page.
-8. Create `delete_content.php` page.
-9. Create `about_us.php` page.
-10. Create `home.php` page.
-11. ...
+6. ~~Create `add_content.php` page.~~ :white_check_mark:
+7. ~~Create a list of user's articles on `dashboard.php` page.~~ :white_check_mark:
+8. Create `edit_content.php` page.
+9. Create `delete_content.php` page.
+10. Create `show_article.php` page 
+10. Create `about_us.php` page.
+11. Create `home.php` page.
+12. ...
 
 ## Content creation pages must include:
 1. Add Article feature.

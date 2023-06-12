@@ -12,9 +12,39 @@ include("auth_session.php");
 </head>
 <body>
     <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
-    <p align="right"><a href="logout.php">Logout</a></p>
     <h2 align="center">What will you share with us today?</h2>
-    <a href="add_article.php">Add Article</a>
-    <p> Your Articles </p>
+    <p align="right"><a href="logout.php">Logout</a></p> 
+    <p align="right"><a href="add_article.php">Add Article</a></p>
+    <table border="1px" width="100%">
+        <thead>
+            <tr>
+                <th colspan="5"> Your Articles </th>
+            </tr>
+        </thead>
+        <tbody>  
+            <tr>
+                <th>#</th>
+                <th>Topic</th>
+                <th>Create Time</th>
+                <th>Edit Time</th>
+                <th>Published</th>
+            </tr>
+<?php
+    require('db_connection.php');
+    $query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='user'");
+
+    $i = 1;
+    while ($item = mysqli_fetch_array($query)) {
+        print "<tr>";
+            print '<td align="center">' . $i++ . "</td>";
+            print '<td>' . $item['topic'] . "</td>"; 
+            print '<td align="center">' . $item['create_datetime'] . "</td>";
+            print '<td align="center">' . $item['edit_datetime'] . "</td>";
+            print '<td align="center">' . $item['public'] . "</br>";
+        print "</tr>";
+    }
+?>
+        </tbody>
+    </table>
 </body>
 </html>
