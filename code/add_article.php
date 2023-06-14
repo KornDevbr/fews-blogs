@@ -17,8 +17,8 @@
         $topic      = mysqli_real_escape_string($db_connection, $_REQUEST['topic']);
         $content    = mysqli_real_escape_string($db_connection, $_REQUEST['content']);
         $username   = $_SESSION['username'];
-        $create_datetime = date("Y-m-d H:i:s");
-        $edit_datetime   = date("Y-m-d H:i:s");
+        $create_datetime = date("d-m-Y H:i:s");
+        $edit_datetime   = date("d-m-Y H:i:s");
         // Checking the checkbox value
         if (isset($_POST['publish'])){
             $publish = "yes";

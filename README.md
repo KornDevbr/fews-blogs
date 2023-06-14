@@ -34,12 +34,15 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 5. ~~Create `logout.php` page.~~ :white_check_mark:
 6. ~~Create `add_content.php` page.~~ :white_check_mark:
 7. ~~Create a list of user's articles on `dashboard.php` page.~~ :white_check_mark:
-8. Create `edit_content.php` page.
-9. Create `delete_content.php` page.
-10. Create `show_article.php` page 
-10. Create `about_us.php` page.
-11. Create `home.php` page.
-12. ...
+8. Create `article.php` page.
+9. Create `article_edit.php` page.
+10. Create `article_preview.php` page.
+11. Create `article_delete.php` page.
+12. Create `about_us.php` page.
+13. Create `home.php` page. *For what???*
+14. Cerate `user_profile.php` page.
+15. Create `user_profile_edit.php` page.
+14. ...
 
 ## Content creation pages must include:
 1. Add Article feature.

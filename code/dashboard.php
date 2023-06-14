@@ -18,7 +18,7 @@ include("auth_session.php");
     <table border="1px" width="100%">
         <thead>
             <tr>
-                <th colspan="5"> Your Articles </th>
+                <th colspan="7"> Your Articles </th>
             </tr>
         </thead>
         <tbody>  
@@ -28,6 +28,8 @@ include("auth_session.php");
                 <th>Create Time</th>
                 <th>Edit Time</th>
                 <th>Published</th>
+                <th>Edit</th>
+                <th>Delte</th>
             </tr>
 <?php
     require('db_connection.php');
@@ -37,10 +39,12 @@ include("auth_session.php");
     while ($item = mysqli_fetch_array($query)) {
         print "<tr>";
             print '<td align="center">' . $i++ . "</td>";
-            print '<td>' . $item['topic'] . "</td>"; 
+            print '<td> <a href="article_preview.php?id=' . $item['article_id'] . '"</a>' . $item['topic'] . "</td>"; 
             print '<td align="center">' . $item['create_datetime'] . "</td>";
             print '<td align="center">' . $item['edit_datetime'] . "</td>";
             print '<td align="center">' . $item['public'] . "</br>";
+            print '<td align="center"> <a href="edit_article.php?article_id=' . $item['article_id'] . '">edit</a> </td>';
+            print '<td align="center"> <a href="">delete</a> </td>';
         print "</tr>";
     }
 ?>
