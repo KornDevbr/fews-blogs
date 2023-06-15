@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a @korn website for studying and practice with the **PHP**, HTML, CSS and JS programming languages. 
+This is a [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying and practice with the **PHP**, HTML, CSS and JS programming languages. 
 
 ## Website must include
 1. Homepage(index.php) with articles inside it.
@@ -18,6 +18,7 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 3. Login form on home page.
 4. Not removing data from fields while registration.
 5. Comments system.
+6. Like (rating) articles system.
 6. ...
 
 ## Features
@@ -34,7 +35,7 @@ This is a @korn website for studying and practice with the **PHP**, HTML, CSS an
 5. ~~Create `logout.php` page.~~ :white_check_mark:
 6. ~~Create `add_content.php` page.~~ :white_check_mark:
 7. ~~Create a list of user's articles on `dashboard.php` page.~~ :white_check_mark:
-8. Create `article.php` page.
+8. ~~Create `article.php` page.~~ :white_check_mark:
 9. Create `article_edit.php` page.
 10. Create `article_preview.php` page.
 11. Create `article_delete.php` page.

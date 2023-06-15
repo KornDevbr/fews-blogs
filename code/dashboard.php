@@ -1,5 +1,5 @@
 <?php
-// Include db_connect.php file on all user panel pages
+// Check user session.
 include("auth_session.php");
 ?>
 <!DOCTYPE html>
