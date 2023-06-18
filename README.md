@@ -19,7 +19,8 @@ This is a [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying and
 4. Not removing data from fields while registration.
 5. Comments system.
 6. Like (rating) articles system.
-6. ...
+7. Add buttons to publish/unpublish articles.
+8. ...
 
 ## Features
 1. Databse with users creation.
@@ -37,7 +38,7 @@ This is a [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying and
 7. ~~Create a list of user's articles on `dashboard.php` page.~~ :white_check_mark:
 8. ~~Create `article.php` page.~~ :white_check_mark:
 9. Create `article_edit.php` page.
-10. Create `article_preview.php` page.
+10. ~~Create `article_preview.php` page.~~ :white_check_mark:
 11. Create `article_delete.php` page.
 12. Create `about_us.php` page.
 13. Create `home.php` page. *For what???*

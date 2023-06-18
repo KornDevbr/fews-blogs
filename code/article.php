@@ -1,24 +1,11 @@
 <?php
     require('db_connection.php'); // Connection to database.
-
-    function article_not_found(){ 
-?>
-        <head>
-            <meta charset='UTF-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <title>Not Found | Fews Blogs</title>
-        </head>
-        <body>
-            <h1 align='center'>The article doesn't exist</h1>
-        </body>
-<?php
-    }
     
     if(!empty($_GET['id'])) {
         $article_id = $_GET['id'];
         $_SESSION['article_id'] = $article_id; // TODO Delete this variable if it changes nothing.
 
-        $query =  mysqli_query($db_connection, "SELECT * FROM `articles` WHERE article_id='$article_id'");
+        $query =  mysqli_query($db_connection, "SELECT * FROM `articles` WHERE (article_id,public)=('$article_id','yes')");
         $item  =  mysqli_fetch_array($query);
         $count = mysqli_num_rows($query);
 
@@ -33,18 +20,19 @@
             </head>
             <body>
                 <h2 align="center"><?php print $item['topic']?></h2> </br>
-                <p align="right">Created by: <?php print $item['username']?></p>
+                <p align="right">Created by: <a href=user_profile.php><?php print $item['username']?></a></p>
                 <p align="center"><?php print $item['content']?></p>
                 <p> <b>Create Time:</b> <?php print $item['create_datetime']?></p>
                 <p> <b>Last Edit:</b> <?php print $item['edit_datetime']?></p> </br>
+                <p align="center">Back to <a href=index.php>Homepage</a></p>
                 <p align="center">POSSIBLE_COMMENT_SECTION_HERE</p>
             </body>
             </html>
 <?php
         } else {
-            article_not_found();
+            include("article_does_not_exist.php");
         }
     } else {
-        article_not_found();
+        include("article_does_not_exist.php");
     }
 ?>
