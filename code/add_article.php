@@ -21,7 +21,7 @@
         $create_datetime = date("d-m-Y H:i:s");
         $edit_datetime   = date("d-m-Y H:i:s");
         
-        // Checking the checkbox value
+        // Checking the Publish checkbox value
         if (isset($_POST['publish'])){
             $publish = "yes";
         } else {
