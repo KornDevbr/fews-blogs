@@ -5,8 +5,12 @@
         $article_id = $_GET['id'];
         $_SESSION['article_id'] = $article_id; // TODO Delete this variable if it changes nothing.
 
-        $query =  mysqli_query($db_connection, "SELECT * FROM `articles` WHERE (article_id,public)=('$article_id','yes')");
+        $query =  mysqli_query($db_connection, "SELECT * FROM `articles` 
+            WHERE (article_id,public)=('$article_id','yes')");
         $item  =  mysqli_fetch_array($query);
+        $usernmae = $item['username'];
+        $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$usernmae'");
+        $user_item = mysqli_fetch_array($user_query);
         $count = mysqli_num_rows($query);
 
         if($count > 0) { 
@@ -16,11 +20,11 @@
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title><?php print $item['topic'] . " | Fews Blogs"?></title>
+                <title><?php print $item['topic'] ?> | Fews Blogs</title>
             </head>
             <body>
                 <h2 align="center"><?php print $item['topic']?></h2> </br>
-                <p align="right">Created by: <a href=user_profile.php><?php print $item['username']?></a></p>
+                <p align="right">Created by: <a href="user_profile.php?id=<?php print $user_item['id'] ?>"><?php print $item['username']?></a></p>
                 <p align="center"><?php print $item['content']?></p>
                 <p> <b>Create Time:</b> <?php print $item['create_datetime']?></p>
                 <p> <b>Last Edit:</b> <?php print $item['edit_datetime']?></p> </br>

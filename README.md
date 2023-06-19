@@ -39,12 +39,15 @@ This is a [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying and
 8. ~~Create `article.php` page.~~ :white_check_mark:
 9. Create `article_edit.php` page.
 10. ~~Create `article_preview.php` page.~~ :white_check_mark:
-11. Create `article_delete.php` page.
+11. ~~Create `article_delete.php` page.~~ :white_check_mark:
 12. Create `about_us.php` page.
 13. Create `home.php` page. *For what???*
-14. Cerate `user_profile.php` page.
+14. ~~Cerate `user_profile.php` page.~~ :white_check_mark:
+    - Add `Edit` link to profile page. That appears only for the page owner.
 15. Create `user_profile_edit.php` page.
-14. ...
+16. Leave *comments* above the code block with explanations of them.
+17. Change `include("article_not_found.php")` and the same with "user_not_exist.php" to one `PAGE NOT FOUND` file.
+18. ...
 
 ## Content creation pages must include:
 1. Add Article feature.
