@@ -29,9 +29,10 @@
         $password   = stripslashes($_REQUEST['password']);
         $password   = mysqli_real_escape_string($db_connection, $password);
         $cpassword  = stripslashes($_REQUEST['cpassword']);
-        $gender     = 'other';
         $gender     = stripslashes($_REQUEST['gender']);
         $gender     = mysqli_real_escape_string($db_connection, $gender);
+        $bio        = stripslashes($_REQUEST['bio']);
+        $bio        = mysqli_real_escape_string($db_connection, $bio);
         $create_datetime = date("Y-m-d H:i:s");
         // Checking does the given username already exist.
         $get_user   = mysqli_query($db_connection, "SELECT * FROM users WHERE username='$username';");
@@ -48,9 +49,9 @@
             exit();
         }
 
-        $query      = "INSERT into `users` (username, password, email, gender, create_datetime)
-                        VALUES ('$username', '" . md5($password) . "', '$email', '$gender', '$create_datetime')";
-        $result     = mysqli_query($db_connection, $query);    
+        $user_query      = "INSERT into `users` (username, password, email, gender, bio, create_datetime)
+                        VALUES ('$username', '" . md5($password) . "', '$email', '$gender', ,'$bio', '$create_datetime')";
+        $result     = mysqli_query($db_connection, $user_query);    
         
         if ($result) {
             echo "<div class='form'>
@@ -76,10 +77,12 @@
             <input type="radio" name="gender" value="male">Male
             <input type="radio" name="gender" value="cat">Cat
             <input type="radio" name="gender" value="other" checked>Other </br>
+        Bio </br>
+        <textarea name="bio" rows="10" cols="60"></textarea> </br>
         Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br>
         <input type="submit" name="submit" value="Register">
-        <p class="link">Already registered? <a href="login.php">Login</a> to the website</p>
-        <p> Go back to <a href="index.php">Home</a> page</p>
+        <p class="link">Already registered? <a href="login.php">Login</a> to our website</p>
+        <p>Back to <a href="index.php">Home page</a></p>
     </form>
 <?php
     }

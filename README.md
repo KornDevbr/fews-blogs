@@ -43,8 +43,10 @@ This is a [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying and
 12. Create `about_us.php` page.
 13. Create `home.php` page. *For what???*
 14. ~~Cerate `user_profile.php` page.~~ :white_check_mark:
-    - Add `Edit` link to profile page. That appears only for the page owner.
+    - ~~Add `Edit` link to profile page. That appears only for the page owner.~~ :white_check_mark:
 15. Create `user_profile_edit.php` page.
+    - Create different forms for every change like email, gender, bio, password;
+    - Create a function with database query that contains variables for updated item and its updated value;
 16. Leave *comments* above the code block with explanations of them.
 17. Change `include("article_not_found.php")` and the same with "user_not_exist.php" to one `PAGE NOT FOUND` file.
 18. ...

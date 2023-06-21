@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require("db_connection.php");
 
     if(!empty($_GET['id'])) {
@@ -22,10 +23,17 @@
             </head>
             <body>
                 <h1><?php print $username ?>'s profile page</h1>
-                <p><b>Profile creation:</b> <?php print $user_item['create_datetime'] ?></p>
+                <p><b>Registration date:</b> <?php print $user_item['create_datetime'] ?></p>
                 <p><b>Sex:</b> <?php print $user_item['gender'] ?></p>
                 <p><b>Emal:</b> <a href="mailto:<?php print $user_item['email'] ?>"><?php print $user_item['email'] ?></a>
-
+<?php
+                if(isset($_SESSION['username'])){
+                    if($_SESSION['username'] == $username){
+                        print "</br><a href='user_profile_edit?id=" . $user_item['id'] . "'>Edit profile page</a>";
+                    }
+                }
+?>
+                <p>Back to <a href="index.php">Homepage</a></p>
                 <h2 align="center"><?php print $user_item['username'] ?>'s articles</h2>
 <?php
                 while ($article_item = mysqli_fetch_array($article_query)) {
@@ -39,9 +47,9 @@
             </html>
 <?php
         } else {
-            include("user_not_exist.php");
+            include("page_not_found.php");
         }
     } else {
-        include("user_not_exist.php");
+        include("page_not_found.php");
     }
 ?>

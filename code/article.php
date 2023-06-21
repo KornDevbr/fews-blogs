@@ -3,17 +3,16 @@
     
     if(!empty($_GET['id'])) {
         $article_id = $_GET['id'];
-        $_SESSION['article_id'] = $article_id; // TODO Delete this variable if it changes nothing.
 
         $query =  mysqli_query($db_connection, "SELECT * FROM `articles` 
             WHERE (article_id,public)=('$article_id','yes')");
         $item  =  mysqli_fetch_array($query);
-        $usernmae = $item['username'];
-        $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$usernmae'");
-        $user_item = mysqli_fetch_array($user_query);
         $count = mysqli_num_rows($query);
 
-        if($count > 0) { 
+        if($count > 0) {
+            $usernmae = $item['username'];
+            $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$usernmae'");
+            $user_item = mysqli_fetch_array($user_query);
 ?>
             <!DOCTYPE html>
             <html lang="en">
@@ -34,9 +33,9 @@
             </html>
 <?php
         } else {
-            include("article_does_not_exist.php");
+            include("page_not_found.php");
         }
     } else {
-        include("article_does_not_exist.php");
+        include("page_not_found.php");
     }
 ?>

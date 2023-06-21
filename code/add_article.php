@@ -10,7 +10,7 @@
     <title>Add Article | Fews Blogs</title>
 </head>
 <body>
-    <h1>Add an article</h1>
+    <h1>Add Article</h1>
 <?php
     require('db_connection.php');
     

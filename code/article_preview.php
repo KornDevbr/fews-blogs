@@ -35,9 +35,9 @@
             </html>
 <?php 
         } else {
-            include("article_does_not_exist.php");
+            include("page_not_found.php");
         }
     } else {
-        include("article_does_not_exist.php");
+        include("page_not_found.php");
     }
 ?>
