@@ -25,11 +25,12 @@
                 <h1><?php print $username ?>'s profile page</h1>
                 <p><b>Registration date:</b> <?php print $user_item['create_datetime'] ?></p>
                 <p><b>Sex:</b> <?php print $user_item['gender'] ?></p>
-                <p><b>Emal:</b> <a href="mailto:<?php print $user_item['email'] ?>"><?php print $user_item['email'] ?></a>
+                <p><b>Emal:</b> <a href="mailto:<?php print $user_item['email'] ?>"><?php print $user_item['email'] ?></a></br></br>
 <?php
                 if(isset($_SESSION['username'])){
                     if($_SESSION['username'] == $username){
-                        print "</br><a href='user_profile_edit?id=" . $user_item['id'] . "'>Edit profile page</a>";
+                        print "<a href='user_profile_edit.php?id=" . $user_item['id'] . "'>Edit profile page</a>";
+                        print "<p>Go to <a href='dashboard.php'>Dashboard</a><p>";
                     }
                 }
 ?>

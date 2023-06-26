@@ -13,7 +13,11 @@
         <input type="password" name="cpassword" placeholder="Configrm password" required> </br>
         <input type="submit" value="Check">
     </form>
-    <?php
+<?php
+    function edit_user_profile($name,$value) {
+        print "The $name is $value";
+    }
+
     $password = stripslashes($_REQUEST['password']);
     $cpassword = stripslashes($_REQUEST['cpassword']);
 
@@ -21,9 +25,13 @@
         echo "<script> alert('The passwords are different')</script>";
 
     } else {
-        echo "<script> alert('The passwords are the same.')</script>";
-        echo "Well done!!!";
+        $name  = "password";
+        $value = $_REQUEST['password'];
+        //echo "<script> alert('The passwords are the same.')</script>";
+        edit_user_profile($name,$value);
     }
-    ?>
+
+
+?>
 </body>
 </html>

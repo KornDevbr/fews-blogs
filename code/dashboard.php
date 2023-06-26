@@ -1,6 +1,11 @@
 <?php
 // Check user session.
 include("auth_session.php");
+require('db_connection.php');
+$username = $_SESSION['username'];
+$article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username'");
+$user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
+$user_item = mysqli_fetch_array($user_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,15 +18,12 @@ include("auth_session.php");
 <body>
     <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
     <h2 align="center">What will you share with us today?</h2>
+    <p align="right"><a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a></p>
     <p align="right"><a href="logout.php">Logout</a></p> 
     <p align="right"><a href="add_article.php">Add Article</a></p>
     <p>Back to <a href="index.php">homepage</a><p>
 <?php
-    require('db_connection.php');
-    $username = $_SESSION['username'];
-    $query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username'");
-    $count = mysqli_num_rows($query);
-
+    $count = mysqli_num_rows($article_query);
     if ($count > 0) {
 ?>
     <table border="1px" width="100%">
@@ -42,15 +44,15 @@ include("auth_session.php");
             </tr>
 <?php
         $i = 1;
-        while ($item = mysqli_fetch_array($query)) {
+        while ($article_item = mysqli_fetch_array($article_query)) {
             print "<tr>";
                 print '<td align="center">' . $i++ . "</td>";
-                print '<td> <a href="article_preview.php?id=' . $item['article_id'] . '"</a>' . $item['topic'] . "</td>"; 
-                print '<td align="center">' . $item['create_datetime'] . "</td>";
-                print '<td align="center">' . $item['edit_datetime'] . "</td>";
-                print '<td align="center">' . $item['public'] . "</br>";
-                print '<td align="center"> <a href="edit_article.php?id=' . $item['article_id'] . '">edit</a> </td>';
-                print '<td align="center"> <a href="#" onclick="delete_article('.$item['article_id'].')">delete</a> </td>';
+                print '<td> <a href="article_preview.php?id=' . $article_item['article_id'] . '"</a>' . $article_item['topic'] . "</td>"; 
+                print '<td align="center">' . $article_item['create_datetime'] . "</td>";
+                print '<td align="center">' . $article_item['edit_datetime'] . "</td>";
+                print '<td align="center">' . $article_item['public'] . "</br>";
+                print '<td align="center"> <a href="edit_article.php?id=' . $article_item['article_id'] . '">edit</a> </td>';
+                print '<td align="center"> <a href="#" onclick="delete_article('.$article_item['article_id'].')">delete</a> </td>';
             print "</tr>";
         }
     } else {

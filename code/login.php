@@ -24,7 +24,7 @@
             if ($rows == 1) {
                 $_SESSION['username'] = $username;
                 // Redirect to user dashboard page.
-                header("Location: dashboard.php");
+                header("Location: index.php");
             } else {
                 echo "<script> alert('Incorrect Username or password') </script></br>";
                 echo "<script> window.location='login.php' </script>";
