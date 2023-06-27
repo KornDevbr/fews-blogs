@@ -1,12 +1,12 @@
 <?php
     include('auth_session.php'); // Check user session.
     require('db_connection.php'); // Connection to database;
+    include('user_panel.php');
 
     if(!empty($_GET['id'])) {
         $article_id = $_GET['id'];
         $_SESSION['article_id'] = $article_id; // TODO Delete this variable ifit changes nothing.
         $username = $_SESSION['username'];
-
         $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` 
             WHERE (article_id,username)=('$article_id','$username')");
         $article_item = mysqli_fetch_array($article_query);

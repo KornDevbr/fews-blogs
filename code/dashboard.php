@@ -1,11 +1,12 @@
 <?php
-// Check user session.
-include("auth_session.php");
-require('db_connection.php');
-$username = $_SESSION['username'];
-$article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username'");
-$user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
-$user_item = mysqli_fetch_array($user_query);
+    include("auth_session.php");
+    include("user_panel.php");
+    require('db_connection.php');
+    
+    $username = $_SESSION['username'];
+    $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username'");
+    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
+    $user_item = mysqli_fetch_array($user_query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +20,8 @@ $user_item = mysqli_fetch_array($user_query);
     <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
     <h2 align="center">What will you share with us today?</h2>
     <p align="right"><a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a></p>
-    <p align="right"><a href="logout.php">Logout</a></p> 
     <p align="right"><a href="add_article.php">Add Article</a></p>
-    <p>Back to <a href="index.php">homepage</a><p>
+    <p>Back to <a href="index.php">Homepage</a><p>
 <?php
     $count = mysqli_num_rows($article_query);
     if ($count > 0) {

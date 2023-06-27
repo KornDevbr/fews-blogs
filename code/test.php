@@ -15,7 +15,7 @@
     </form>
 <?php
     function edit_user_profile($name,$value) {
-        print "The $name is $value";
+        print "The $name is " . md5($value);
     }
 
     $password = stripslashes($_REQUEST['password']);

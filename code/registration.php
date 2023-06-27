@@ -9,14 +9,13 @@
 <body>
     <h1>Fews Blogs Registration</h1>
     <h3>Please fill the registration form</h3> </br>
-
 <?php
     require('db_connection.php');
     // When form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
         // Checking do password are different.
         if ($_REQUEST['password'] != $_REQUEST['cpassword']) {
-            echo "<script> alert('Password and Confirmation password you inputed are different. They must be the same.') </script></br>";
+            echo "<script> alert('Password and Confirmation password are different. They must be the same.') </script></br>";
             echo "<script> window.location='registration.php' </script>";
             exit();
         }

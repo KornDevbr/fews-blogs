@@ -1,9 +1,10 @@
 <?php
+    session_start();
+    include("user_panel.php");
     require('db_connection.php'); // Connection to database.
     
     if(!empty($_GET['id'])) {
         $article_id = $_GET['id'];
-
         $query =  mysqli_query($db_connection, "SELECT * FROM `articles` 
             WHERE (article_id,public)=('$article_id','yes')");
         $item  =  mysqli_fetch_array($query);

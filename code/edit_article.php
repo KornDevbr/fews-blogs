@@ -46,9 +46,6 @@
     } else {
         include("page_not_found.php");
     }
-?>
-
-<?php
     if(isset($_REQUEST['topic'])) {
         $topic      = mysqli_real_escape_string($db_connection, $_REQUEST['topic']);
         $content    = mysqli_real_escape_string($db_connection, $_REQUEST['content']);

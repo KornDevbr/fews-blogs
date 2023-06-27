@@ -21,6 +21,7 @@
             $query      = "SELECT * FROM `users` WHERE username='$username' AND password='" . md5($password) . "'";
             $result     = mysqli_query($db_connection, $query) or die(mysql_error());
             $rows       = mysqli_num_rows($result);
+
             if ($rows == 1) {
                 $_SESSION['username'] = $username;
                 // Redirect to user dashboard page.
@@ -36,11 +37,11 @@
             <input type="text" name="username" placeholder="Username" autofocus="true"> </br>
             <input type="password" name="password" placeholder="Password"> </br>
             <input type="submit" value="Login" name="submit"> </br>
-            <p><a href="registration.php">New Registration</a></p>
+            <p><a href="registration.php">Register</a></p>
         </from>            
     <?php        
         }
     ?>
-    <p>Go back to <a href="index.php">Home</a> page</a>
+    <p>Back to <a href="index.php">Homepage</a></p>
 </body>
 </html>

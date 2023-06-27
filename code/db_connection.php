@@ -4,7 +4,6 @@
     $db_name    = "fews-blogs";
     $db_user    = "fews-blogs";
     $db_password = "fews-blogs";
-
     $db_connection = mysqli_connect($db_host, $db_name, $db_user, $db_password);
     // Check connection.
     if (mysqli_connect_errno()){
