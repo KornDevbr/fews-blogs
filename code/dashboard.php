@@ -4,7 +4,7 @@
     require('db_connection.php');
     
     $username = $_SESSION['username'];
-    $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username'");
+    $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username' ORDER BY create_datetime DESC");
     $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
     $user_item = mysqli_fetch_array($user_query);
 ?>

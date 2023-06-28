@@ -11,8 +11,7 @@
 
         if($count > 0) {
             $username   = $user_item['username'];
-            $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE (username,public)=('$username','yes')");
-            $article_item  = mysqli_fetch_array($article_query);
+            $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE (username,public)=('$username','yes') ORDER BY create_datetime DESC");
 ?>
             <!DOCTYPE html>
             <html lang="en">

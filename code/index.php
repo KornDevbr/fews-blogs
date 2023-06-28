@@ -21,13 +21,12 @@
     if(isset($_SESSION['username'])) {
         print "<p>Go to <a href='dashboard.php'>Dashboard</a></p>";
     }
-    $query      = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE public='yes'") or die(mysqli_error());
-    $item       = mysqli_fetch_array($query);
-    $username   = $item['username'];
-    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
-    $user_item  = mysqli_fetch_array($user_query);
+    $query      = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE public='yes' ORDER BY create_datetime DESC") or die(mysqli_error());
 
     while ($item = mysqli_fetch_array($query)) {
+        $username   = $item['username'];
+        $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
+        $user_item  = mysqli_fetch_array($user_query);
 ?>
         <h2 align="center"><a href="article.php?id=<?php print $item['article_id'] ?>"><?php print $item['topic'] ?></a></h2>
         <p><b>Create Time: </b><?php print $item['create_datetime'] ?> <b>Last Edit: </b><?php print $item['edit_datetime'] ?></p>
