@@ -15,17 +15,12 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 1. Tags for articles and possibility to sort articles by topics. Or pages with different topics.
 2. Articles must include possibility to add images.
     - Use the same script for saving user avatars. (Optional)
-3. Login form on home page.
+3. Login form on home page. Or maybe not.
 4. Not removing data from fields while registration.
 5. Comments system.
 6. Like (rating) articles system.
 7. Add buttons to publish/unpublish articles.
 8. ...
-
-## Features
-1. Databse with users creation.
-2. One page to connect a database for all pages.
-3. ...
 
 ## Order of doing things. Backend. (Project Status)
 1. ~~Make a sample of the `index.php` page.~~ :white_check_mark:
@@ -40,7 +35,7 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 9. ~~Create `article_edit.php` page.~~ :white_check_mark:
 10. ~~Create `article_preview.php` page.~~ :white_check_mark:
 11. ~~Create `article_delete.php` page.~~ :white_check_mark:
-12. Create `about_us.php` page.
+12. ~~Create `about_us.php` page.~~
 13. Create `home.php` page. *For what???*
 14. ~~Cerate `user_profile.php` page.~~ :white_check_mark:
     - ~~Add `Edit` link to profile page. That appears only for the page owner.~~ :white_check_mark:
@@ -56,8 +51,35 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 2. Edit Article feature.
 3. Delete Article feature.
 4. List of user made Articles.
-5. Text area field.
+5. Textarea field.
 6. Publish checkbox.
-7. MYSQL table with articles.
-8. Tags system (experiment with database queries).
-9. ...
+7. Tags system (experiment with database queries).
+8. ...
+
+## Comment system making plan.
+1. ~~Create a database table for storing users comments. The table must include the next rows:~~
+    - comment_id;
+    - comment;
+    - publication_datetime;
+    - edited_datetime;
+    - article_id;
+    - article_topic;
+    - username;
+    - username_id;
+    - username_email.   :white_check_mark:
+2. ~~Create the `comment_add.php` page: ~~
+    - Form for adding a comment;
+    - Database query with adding a comment; :white_check_mark: (Made it on the `article.php` page.)
+3. Create the `comment_edit.php` page:
+    - Forn for editing a comment;
+    - Database query for editing comments;
+4. Create the `comment_delete.php` page.
+5. Add list of users commentst to the `article.php` page.
+    - Edit comment button:
+        ```
+        if($_SESSION['username']) == $comment_query['username']{
+            EDIT_BUTTON
+        }
+        ```
+6. Add comments quantity under the every article on the `index.php` page.
+7. Add list of all left user's comments to the `dasboard.php` page.

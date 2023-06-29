@@ -14,6 +14,7 @@
 <?php
     require("db_connection.php");
 ?>
+    <p align="right"><a href="about_us.php">About us</a></p>
     <h1 align="center">Fews Blogs</h1>
     <h2 align="center">Share us any of your thoughts</h2> </br> </br>
 <?php
