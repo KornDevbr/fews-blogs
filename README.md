@@ -6,7 +6,7 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 
 ## Website must include
 1. Homepage(index.php) with articles inside it.
-2. Logged in hompage with articles inside it.
+2. Logged in homepage with articles inside it.
 3. Own articles page with an opportunity to add/edit/delete content (articles).
 4. About US page.
 5. ...
@@ -19,7 +19,7 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 4. Not removing data from fields while registration.
 5. Comments system.
 6. Like (rating) articles system.
-7. Add buttons to publish/unpublish articles.
+7. Add buttons to publish/unpublished articles.
 8. ...
 
 ## Order of doing things. Backend. (Project Status)
@@ -71,10 +71,10 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
     - Form for adding a comment;
     - Database query with adding a comment; :white_check_mark: (Made it on the `article.php` page.)
 3. Create the `comment_edit.php` page:
-    - Forn for editing a comment;
+    - Form for editing a comment;
     - Database query for editing comments;
 4. Create the `comment_delete.php` page.
-5. Add list of users commentst to the `article.php` page.
+5. Add list of users comments to the `article.php` page.
     - Edit comment button:
         ```
         if($_SESSION['username']) == $comment_query['username']{
@@ -82,4 +82,11 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
         }
         ```
 6. Add comments quantity under the every article on the `index.php` page.
-7. Add list of all left user's comments to the `dasboard.php` page.
+7. Add list of all left user's comments to the `dashboard.php` page.
+8. Comment list section in descending order. Comment must include:
+    - Linked username;
+    - Publication date;
+    - Comment text;
+    - Edit comment button (For comment owner);
+    - Delete comment button (For comment owner);
+    - Comment number; 

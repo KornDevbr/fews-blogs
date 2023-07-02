@@ -51,8 +51,8 @@
                 print '<td align="center">' . $article_item['create_datetime'] . "</td>";
                 print '<td align="center">' . $article_item['edit_datetime'] . "</td>";
                 print '<td align="center">' . $article_item['public'] . "</br>";
-                print '<td align="center"> <a href="edit_article.php?id=' . $article_item['article_id'] . '">edit</a> </td>';
-                print '<td align="center"> <a href="#" onclick="delete_article('.$article_item['article_id'].')">delete</a> </td>';
+                print '<td align="center"> <a href="edit_article.php?id=' . $article_item['article_id'] . '">Edit</a> </td>';
+                print '<td align="center"> <a href="#" onclick="delete_article('.$article_item['article_id'].')">Delete</a> </td>';
             print "</tr>";
         }
     } else {
