@@ -31,6 +31,7 @@
         edit_user_profile($name,$value);
     }
 
+    //header("Location:".$_SERVER['HTTP_REFERER']);
 
 ?>
 </body>

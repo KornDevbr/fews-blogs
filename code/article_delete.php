@@ -8,5 +8,6 @@
         $query = mysqli_query($db_connection, "DELETE FROM `articles` 
             WHERE (article_id,username)=('$article_id','$username')");
         header("location:dashboard.php");
+        die();
     }
 ?>

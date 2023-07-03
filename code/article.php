@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("user_panel.php");
+    include('user_panel.php');
     require('db_connection.php'); // Connection to database.
     
     if(!empty($_GET['id'])) {
@@ -32,16 +32,16 @@
                 <p align="center">Comments</p>
 <?php           if (isset($_SESSION['username'])) {
 ?>
-                <form action="" method="post">
-                    <p>Add Comment</p>
-                    <textarea 
-                        name="comment" 
-                        rows="2" 
-                        cols="60"
-                        placeholder="Text here"
-                        required></textarea> </br>
-                    <input type="submit" name="add_comment" value="Add Comment">
-                </form>
+                    <form action="" method="post">
+                        <p>Add Comment</p>
+                        <textarea 
+                            name="comment" 
+                            rows="2" 
+                            cols="60"
+                            placeholder="Text here"
+                            required></textarea> </br>
+                        <input type="submit" name="add_comment" value="Add Comment">
+                    </form>
 <?php           }
             if(isset($_REQUEST['comment'])) {
                 $comment_username       = $_SESSION['username'];
@@ -84,8 +84,8 @@
                          . $comment_list_item['username'] . "</a> " . $comment_list_item['create_datetime'] . "</br>"
                          . $comment_list_item['comment'] . "</br>";
                     if($_SESSION['username'] == $comment_list_item['username']){
-                        print "<a href='comment_edit.php?id=" . $comment_list_item['comment_id'] . "'>Edit</a> ";  
-                        print "<a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].")'>Delete</a></p>";
+                        print "<a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a> ";  
+                        print "<a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a></p>";
                     }
                 }
             } else {
@@ -93,10 +93,10 @@
             }
 ?>
             <script>
-                function comment_delete(comment_id) {
+                function comment_delete(comment_id,article_id) {
                     var r = confirm("Delete comment?");
                     if (r == true) {
-                        window.location.assign("comment_delete.php?id=" + comment_id);
+                        window.location.assign("comment_delete.php?id=" + comment_id + "&article_id=" + article_id);
                     }
                 }
             </script>

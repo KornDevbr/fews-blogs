@@ -1,5 +1,4 @@
 <?php
-    // Include db_connection.php file ona all user panelpages
     include("auth_session.php");
     require("db_connection.php");
 
@@ -28,7 +27,7 @@
                 <p><b>Created:</b> <?php print $article_item['create_datetime']?></p>
                 <p><b>Last Edit:</b> <?php print $article_item['edit_datetime']?></p>
                 <p> Published: <?php print $article_item['public']?> </p>
-                <form acion="" method="post">
+                <form action="" method="post">
                     <p>Topic</p>
                     <textarea name="topic" rows="2" cols="60" required><?php print $article_item['topic']?></textarea>
                     <p>Content</p>
