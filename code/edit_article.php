@@ -45,10 +45,11 @@
     } else {
         include("page_not_found.php");
     }
+
     if(isset($_REQUEST['topic'])) {
         $topic      = mysqli_real_escape_string($db_connection, $_REQUEST['topic']);
         $content    = mysqli_real_escape_string($db_connection, $_REQUEST['content']);
-        $username   = $_SESSION['username'];
+        //$username   = $_SESSION['username']; //TODO Delete if it changes nothing.
         $edit_datetime = date("Y-m-d H:i:s");
 
         // Checking the Publish checkbox value
@@ -65,6 +66,8 @@
         if ($article_query) {
             print "<p>The article <b>" . $article_item['topic'] . "</b> was successfully edited!</p>";
             print "<p>Back to <a href='dashboard.php'>Dashboard</a></p>";
+        } else {
+            print "<p>ERROR: The article <b>" . $article_item['topic'] . "</b> wasn't edited.</p>";
         }
     }
 ?>

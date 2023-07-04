@@ -30,7 +30,12 @@
         $user_item  = mysqli_fetch_array($user_query);
 ?>
         <h2 align="center"><a href="article.php?id=<?php print $item['article_id'] ?>"><?php print $item['topic'] ?></a></h2>
-        <p><b>Create Time: </b><?php print $item['create_datetime'] ?> <b>Last Edit: </b><?php print $item['edit_datetime'] ?></p>
+        <p><b>Create Time: </b><?php print $item['create_datetime'] ?></br>
+<?php
+        if ($item['edit_datetime'] != null){
+            print "<b>Edited: </b>" . $item['edit_datetime'] . "</p>";
+        }
+?>
         <p align="right">Created by: <a href="user_profile.php?id=<?php print $user_item['id'] ?>"><?php print $item['username'] ?></a></p>
         <p><?php print $item['content'] ?></p>        
 <?php

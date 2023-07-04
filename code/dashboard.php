@@ -4,8 +4,10 @@
     require('db_connection.php');
     
     $username = $_SESSION['username'];
-    $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` WHERE username='$username' ORDER BY create_datetime DESC");
-    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
+    $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` 
+        WHERE username='$username' ORDER BY create_datetime DESC");
+    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` 
+        WHERE username='$username'");
     $user_item = mysqli_fetch_array($user_query);
 ?>
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasboard | Fews Blogs</title>
+    <title>Dashboard | Fews Blogs</title>
 </head>
 <body>
     <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
@@ -29,7 +31,7 @@
     <table border="1px" width="100%">
         <thead>
             <tr>
-                <th colspan="7"> Your Articles </th>
+                <th colspan="7">Your Articles</th>
             </tr>
         </thead>
         <tbody>  
@@ -40,7 +42,7 @@
                 <th>Edit Time</th>
                 <th>Published</th>
                 <th>Edit</th>
-                <th>Delte</th>
+                <th>Delete</th>
             </tr>
 <?php
         $i = 1;

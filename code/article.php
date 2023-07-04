@@ -81,8 +81,11 @@
                 $n = 1;
                 while ($comment_list_item = mysqli_fetch_array($comment_list_query)){
                     print "<p>#" . $n++ . " " . "<a href='user_profile.php?id=" . $comment_list_item['username_id'] . "'>"
-                         . $comment_list_item['username'] . "</a> " . $comment_list_item['create_datetime'] . "</br>"
-                         . $comment_list_item['comment'] . "</br>";
+                         . $comment_list_item['username'] . "</a> " . $comment_list_item['create_datetime'] . "</br>";
+                    if ($comment_list_item['edit_datetime'] != null){
+                        print "Edited: " . $comment_list_item['edit_datetime'] . "</br>";
+                    }
+                    print  $comment_list_item['comment'] . "</br>";
                     if($_SESSION['username'] == $comment_list_item['username']){
                         print "<a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a> ";  
                         print "<a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a></p>";
