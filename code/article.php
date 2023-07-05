@@ -25,6 +25,12 @@
             <body>
                 <h2 align="center"><?php print $article_item['topic']?></h2> </br>
                 <p align="right">Created by: <a href="user_profile.php?id=<?php print $article_user_item['id'] ?>"><?php print $article_item['username']?></a></p>
+<?php
+                if (isset($_SESSION['username'])){
+                    if($_SESSION['username'] == $article_item['username'])
+                    print "<a href='dashboard.php'>My Articles</a>";
+                }
+?>
                 <p align="center"><?php print $article_item['content']?></p>
                 <p> <b>Create Time:</b> <?php print $article_item['create_datetime']?></p>
                 <p> <b>Last Edit:</b> <?php print $article_item['edit_datetime']?></p> </br>
@@ -86,13 +92,15 @@
                         print "Edited: " . $comment_list_item['edit_datetime'] . "</br>";
                     }
                     print  $comment_list_item['comment'] . "</br>";
-                    if($_SESSION['username'] == $comment_list_item['username']){
-                        print "<a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a> ";  
-                        print "<a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a></p>";
+                    if(isset($_SESSION['username'])){
+                        if($_SESSION['username'] == $comment_list_item['username']){
+                            print "<a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a> ";  
+                            print "<a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a></p>";
+                        }
                     }
                 }
             } else {
-                    print "Nobody hasn't left any comment yet. Be the first one!";
+                    print "<h3 align='center'>Nobody hasn't left any comment yet. Be the first one!</h3>";
             }
 ?>
             <script>

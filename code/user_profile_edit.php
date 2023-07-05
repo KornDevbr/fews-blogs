@@ -27,10 +27,9 @@
     <body>
         <h1>User Profile Edit</h1>
         <p>Back to <a href="user_profile.php?id=<?php print $user_item['id'] ?>">Profile page</a>
-        <h2>Email</h2>
+        <h3>Email address</h3>
         <form action="" method="post">
-            <p>Enter the email address</p>
-                <input type="email" name="email"> <br/>
+                <input type="email" name="email"> <br/></br>
                 <input type="submit" name="change_email" value="Change">
         </form>
 <?php
@@ -40,13 +39,13 @@
             edit_user_profile($name, $value);
         }
 ?>
-        <h2>Gender</h2>
+        <h3>Sex</h3>
         <form action="" method="post">
-            <p>Change gender</p>
-                <input type="radio" name="gender" value="female">Female
-                <input type="radio" name="gender" value="male">Male
-                <input type="radio" name="gender" value="cat">Cat
-                <input type="radio" name="gender" value="other" checked>Other</br>
+                <input type="radio" name="gender" value="Female">Female
+                <input type="radio" name="gender" value="Male">Male
+                <input type="radio" name="gender" value="Cat">Cat
+                <input type="radio" name="gender" value="Yes, please.">Yes, please.
+                <input type="radio" name="gender" value="Other" checked>Other</br></br>
                 <input type="submit" name="change_gender" value="Change">
         </form>
 <?php
@@ -56,11 +55,10 @@
             edit_user_profile($name, $value);
         }
 ?>
-        <h2>Password</h2>
+        <h3>Password</h3>
         <form action="" method="post">
-            <p>Change password</p>
                 <input type="password" name="password" placeholder="Password"></br>
-                <input type="password" name="cpassword" placeholder="Confirm password"></br>
+                <input type="password" name="cpassword" placeholder="Confirm password"></br></br>
                 <input type="submit" name="change_password" value="Change">
         </form>
 <?php
@@ -75,10 +73,9 @@
             }
         }
 ?>
-        <h2>Bio</h2>
+        <h3>Bio</h3>
         <form action="" method="post">
-            <p>Change Bio</p>
-            <textarea name="bio" rows="10" cols="60"></textarea></br>
+            <textarea name="bio" rows="10" cols="60"><?php print $user_item['bio'] ?></textarea></br></br>
             <input type="submit" name="edit_bio" value="Change">
         </form>
 <?php

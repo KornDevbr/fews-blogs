@@ -28,15 +28,15 @@
             $publish = "no";
         }
     
-        $query = "INSERT INTO `articles` (topic, content, username, create_datetime, edit_datetime, public) 
-            VALUES ('$topic', '$content', '$username', '$create_datetime', '$edit_datetime', '$publish')";
+        $query = "INSERT INTO `articles` (topic, content, username, create_datetime, public) 
+            VALUES ('$topic', '$content', '$username', '$create_datetime', '$publish')";
         $result = mysqli_query($db_connection, $query) or die(mysqli_error());
         
         if ($result) {
             print "
-                <h1>Congratulations!</h1> 
-                <h2>You added the article!</h2>
-                <p>Back to <a href='dashboard.php'>Dashboard</a></p></br>
+                <h2>Congratulations!</h2> 
+                <h3>You added the article!</h3>
+                <p><a href='dashboard.php'>My Articles</a></p></br>
                 <p><a href='add_article.php'>Add another</a> article</p>";
         } else {
             echo "Something went wrong. Article wasn't add. :(";

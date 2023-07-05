@@ -23,9 +23,13 @@
             </head>
             <body>
                 <h1>Editing: <?php print $article_item['topic']?></h1>
-                <p>Back to <a href="dashboard.php">Dashboard</a></p>
+                <p>Back to <a href="dashboard.php">My Articles</a></p>
                 <p><b>Created:</b> <?php print $article_item['create_datetime']?></p>
-                <p><b>Last Edit:</b> <?php print $article_item['edit_datetime']?></p>
+<?php
+                if ($article_item['edit_datetime'] != null){
+                    print "<b>Last Edit: </b>" . $article_item['edit_datetime'] . "</p>";
+                }
+?>
                 <p> Published: <?php print $article_item['public']?> </p>
                 <form action="" method="post">
                     <p>Topic</p>
@@ -65,7 +69,6 @@
 
         if ($article_query) {
             print "<p>The article <b>" . $article_item['topic'] . "</b> was successfully edited!</p>";
-            print "<p>Back to <a href='dashboard.php'>Dashboard</a></p>";
         } else {
             print "<p>ERROR: The article <b>" . $article_item['topic'] . "</b> wasn't edited.</p>";
         }

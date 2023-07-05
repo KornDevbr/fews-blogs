@@ -42,7 +42,7 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 15. ~~Create `user_profile_edit.php` page.~~
     - ~~Create different forms for every change like email, gender, bio, password;~~
     - ~~Create a function with database query that contains variables for updated item and its updated value;~~ :white_check_mark:
-16. Leave *comments* above the code block with explanations of them.
+16. Make a code look good. Leave *comments* above the code block with explanations of them.
 17. ~~Change `include("article_not_found.php")` and the same with "user_not_exist.php" to one `PAGE NOT FOUND` file.~~ :white_check_mark:
 18. ...
 
@@ -70,19 +70,19 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
 2. ~~Create the `comment_add.php` page: ~~
     - Form for adding a comment;
     - Database query with adding a comment; :white_check_mark: (Made it on the `article.php` page.)
-3. Create the `comment_edit.php` page:
+3. ~~Create the `comment_edit.php` page:~~
     - Form for editing a comment;
     - Database query for editing comments;
-4. Create the `comment_delete.php` page.
-5. Add list of users comments to the `article.php` page.
+4. ~~Create the `comment_delete.php` page.~~
+5. ~~Add list of users comments to the `article.php` page.~~
     - Edit comment button:
         ```
         if($_SESSION['username']) == $comment_query['username']{
             EDIT_BUTTON
         }
         ```
-6. Add comments quantity under the every article on the `index.php` page.
-7. Add list of all left user's comments to the `dashboard.php` page.
+6. ~~Add comments quantity under the every article on the `index.php` page.~~
+7. ~~Add list of all left user's comments to the `dashboard.php` page.~~
 8. Comment list section in descending order. Comment must include:
     - Linked username;
     - Publication date;

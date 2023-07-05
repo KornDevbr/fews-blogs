@@ -20,6 +20,7 @@
 <body>
     <h2>Your Comments</h2>
     <p align="right"><a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a></p>
+    <p><a href="dashboard.php">My Articles</a></p>
     <p>Back to <a href="index.php">Homepage</a></p>
 <?php
     $count = mysqli_num_rows($comment_query);

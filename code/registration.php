@@ -67,19 +67,23 @@
 ?>
     <form action="" method="post">
         <h1>Registration</h1>
+        <p>Create a username</br>
         <input type="text" name="username" placeholder="Username" required> </br>
-        <input type="email" name="email" placeholder="Email" required> </br>
+        Enter your email address </br>
+        <input type="email" name="email" placeholder="email@example.com" required> </br>
+        Create a strong password </br>
         <input type="password" name="password" placeholder="Password" required> </br>
         <input type="password" name="cpassword" placeholder="Confirm password" required> </br>
-        Gender
-            <input type="radio" name="gender" value="female">Female
-            <input type="radio" name="gender" value="male">Male
-            <input type="radio" name="gender" value="cat">Cat
-            <input type="radio" name="gender" value="other" checked>Other </br>
+        Sex:
+            <input type="radio" name="gender" value="Female">Female
+            <input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Cat">Cat
+            <input type="radio" name="gender" value="Yes, please.">Yes, please.
+            <input type="radio" name="gender" value="Other" checked>Other </br>
         Bio </br>
         <textarea name="bio" rows="10" cols="60"></textarea> </br>
-        Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br>
-        <input type="submit" name="submit" value="Register">
+        <!-- Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br> -->
+        </br><input type="submit" name="submit" value="Register"></p>
         <p class="link">Already registered? <a href="login.php">Login</a> to our website</p>
         <p>Back to <a href="index.php">Home page</a></p>
     </form>

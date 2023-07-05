@@ -22,8 +22,9 @@
     <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
     <h2 align="center">What will you share with us today?</h2>
     <p align="right"><a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a></p>
-    <p align="right"><a href="add_article.php">Add Article</a></p>
+    <p><a href="my_comments.php">My Comments</a></p>
     <p>Back to <a href="index.php">Homepage</a><p>
+    <p align="right"><a href="add_article.php">Add Article</a></p>
 <?php
     $count = mysqli_num_rows($article_query);
     if ($count > 0) {
@@ -49,9 +50,19 @@
         while ($article_item = mysqli_fetch_array($article_query)) {
             print "<tr>";
                 print '<td align="center">' . $i++ . "</td>";
-                print '<td> <a href="article_preview.php?id=' . $article_item['article_id'] . '"</a>' . $article_item['topic'] . "</td>"; 
+                if ($article_item['public'] == "no"){
+                    print '<td> <a href="article_preview.php?id=' . $article_item['article_id'] . '"</a>' . $article_item['topic'] . "</td>"; 
+                } else {
+                    print '<td> <a href="article.php?id=' . $article_item['article_id'] . '"</a>' . $article_item['topic'] . "</td>"; 
+                }
                 print '<td align="center">' . $article_item['create_datetime'] . "</td>";
-                print '<td align="center">' . $article_item['edit_datetime'] . "</td>";
+                print '<td align="center">';
+                    if ($article_item['edit_datetime'] != null){
+                        print $article_item['edit_datetime'];
+                    } else {
+                        print "Not edited";
+                    }
+                print "</td>";
                 print '<td align="center">' . $article_item['public'] . "</br>";
                 print '<td align="center"> <a href="edit_article.php?id=' . $article_item['article_id'] . '">Edit</a> </td>';
                 print '<td align="center"> <a href="#" onclick="delete_article('.$article_item['article_id'].')">Delete</a> </td>';

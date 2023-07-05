@@ -9,10 +9,10 @@
 <body>
     <h1 align="center">Fews Blogs</h1>
     <h2 align="center">About us</h2>
-    <p align="center">We are the little website for blogging. We contain your thougts about everything.</br>
+    <p align="center">We are a little website for blogging. We contain your thoughts about everything.</br>
         Don't wait, share what you think about everything.</br>
-        Read what everyone think about everything.</br>
-        Leave comments about everything under evereone's article about everything.</br>
+        Read what everyone thinks about everything.</br>
+        Leave comments about everything under everyone's article about everything.</br>
         <b>Be</b> like everyone, <b>writ</b>e about ev<b>er</b>ything.</p></br>
     <p align="center">Back to <a href="index.php">Homepage</a></p>
 </body>
