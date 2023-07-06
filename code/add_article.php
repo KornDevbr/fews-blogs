@@ -1,5 +1,6 @@
 <?php
     include("auth_session.php");
+    include("user_panel.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,9 +29,9 @@
             $publish = "no";
         }
     
-        $query = "INSERT INTO `articles` (topic, content, username, create_datetime, public) 
+        $article_add_query = "INSERT INTO `articles` (topic, content, username, create_datetime, public) 
             VALUES ('$topic', '$content', '$username', '$create_datetime', '$publish')";
-        $result = mysqli_query($db_connection, $query) or die(mysqli_error());
+        $result = mysqli_query($db_connection, $article_add_query) or die(mysqli_error());
         
         if ($result) {
             print "
@@ -39,18 +40,18 @@
                 <p><a href='dashboard.php'>My Articles</a></p></br>
                 <p><a href='add_article.php'>Add another</a> article</p>";
         } else {
-            echo "Something went wrong. Article wasn't add. :(";
+            echo "<p>ERROR: Something went wrong. Article wasn't add. :(</p>";
         }
     } else {
 ?>
         <form action="" method="post">
-            <p>Topic</p>
-            <textarea name="topic" rows="2" cols="60" required></textarea> </br>
-            <p>Content</p>
-            <textarea name="content" rows="20" cols="60" required></textarea> </br>
+            <p>Back to <a href="dashboard.php">My Articles</a></p>
+            <h3>Topic</h3>
+            <textarea name="topic" rows="2" cols="60" required></textarea></br>
+            <h3>Content</h3>
+            <textarea name="content" rows="20" cols="60" required></textarea></br>
             Publish? <input type="checkbox" name="publish[]" value="yes"> 
-            <input type="submit" value="Add" name="add"> </br>
-            </br> <p>Back to <a href="dashboard.php">Dashboard</a></p> </br>
+            <input type="submit" value="Add" name="add"></br>
         </form>
 <?php 
     } 

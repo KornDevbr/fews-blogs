@@ -2,16 +2,17 @@
     include('auth_session.php');
     require('db_connection.php');
 
+    // Check does comment id is not empty.
     if (!empty($_GET['id'])) {
         $comment_id = $_GET['id'];
         $username = $_SESSION['username'];
-
         $comment_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
             WHERE (comment_id,username)=('$comment_id','$username')");
         $comment_item = mysqli_fetch_array($comment_query);
         $count = mysqli_num_rows($comment_query);
         $article_id = $comment_item['article_id'];
-
+        
+        // Check does article exists.
         if($count > 0){
 ?>
             <!DOCTYPE html>
@@ -23,8 +24,11 @@
             </head>
             <body>
                 <h3>Edit Comment</h3>
-                <p>Go to <a href="article.php?id=<?php print $article_id ?>">Article</a></p>
-                <p>Go to <a href="dashboard.php">Dashboard</a></p>
+                <p>
+                    Back to <a href="article.php?id=<?php print $article_id ?>">Article</a>
+                    </br>
+                    Go to <a href="dashboard.php">My Articles</a>
+                </p>
                 <form action="" method="post">
                     <p>Comment</p>
                     <textarea 
@@ -39,20 +43,22 @@
             </html>
 <?php
         } else {
+            // Show the "Page not found" error, if comment id isn't exists.
             include('page_not_found.php');
         }
     } else {
+        // Show "Page not found" error if article without id.
         include('page_not_found.php');
     }
 
+    // Edit comment block.
     if (isset($_REQUEST['edit_comment'])) {
         $comment = mysqli_real_escape_string($db_connection, $_REQUEST['edit_comment']);
         $edit_datetime = date("Y-m-d H:i:s");
-
         $comment_edit_query = mysqli_query($db_connection, "UPDATE `comments`
             SET comment='$comment', edit_datetime='$edit_datetime'
             WHERE comment_id='$comment_id'");
-        
+
         if ($comment_edit_query) {
             print "Comment was successfully updated";
         } else {
