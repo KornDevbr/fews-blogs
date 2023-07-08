@@ -19,9 +19,14 @@
 </head>
 <body>
     <h2>Your Comments</h2>
-    <p align="right"><a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a></p>
-    <p><a href="dashboard.php">My Articles</a></p>
-    <p>Back to <a href="index.php">Homepage</a></p>
+    <p align="right">
+        <a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a>
+    </p>
+    <p>
+        <a href="dashboard.php">My Articles</a>
+        </br>
+        Back to <a href="index.php">Homepage</a>
+    </p>
 <?php
     $count = mysqli_num_rows($comment_query);
     if ($count > 0) {
@@ -45,15 +50,19 @@
             print   "<tr>
                         <td align='center'>" . $n++ . "</td>
                         <td align='center'>" . $comment_list['comment'] . "</td>
-                        <td align='center'><a href=article.php?id=". $comment_list['article_id'] . ">" . $comment_list['article_topic'] . "</a></td>
+                        <td align='center'>
+                            <a href=article.php?id=". $comment_list['article_id'] . ">" . $comment_list['article_topic'] . "</a>
+                        </td>
                         <td align='center'>" . $comment_list['create_datetime'] . "</td>
                     </tr>";
         }
+    print "
+        </tbody>
+    </table>
+    ";
     } else {
         print "<h3 align='center'>You didn't leave any comments yet. :(</h3>";
     }
 ?>
-        </tbody>
-    </table>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
     session_start();
-    // Destroy sesion
+    // Destroy session
     if(session_destroy()) {
-        // Redirecting to the Home page.
+        // Redirecting to the home page.
         header("Location: index.php");
     }
 ?>

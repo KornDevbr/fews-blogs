@@ -3,9 +3,11 @@
     require("db_connection.php");
 
     $username = $_SESSION['username'];
-    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` WHERE username='$username'");
+    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` 
+        WHERE username='$username'");
     $user_item = mysqli_fetch_array($user_query);
-
+    
+    // Function for editing user's data.
     function edit_user_profile($name, $value) {
         global $username, $db_connection;
         $user_query = mysqli_query($db_connection, "UPDATE `users` SET $name='$value'
@@ -26,12 +28,16 @@
     </head>
     <body>
         <h1>User Profile Edit</h1>
-        <p>Back to <a href="user_profile.php?id=<?php print $user_item['id'] ?>">Profile page</a>
-        <h3>Email address</h3>
+        <p>Back to 
+            <a href="user_profile.php?id=<?php print $user_item['id'] ?>">Profile page</a>
+        </p>
         <form action="" method="post">
-                <input type="email" name="email"> <br/></br>
-                <input type="submit" name="change_email" value="Change">
+            Email address
+            </br>
+            <input type="email" name="email">
+            <input type="submit" name="change_email" value="Change">
         </form>
+        </br>
 <?php
         if (isset($_REQUEST['email'])) {
             $name = "email";
@@ -39,15 +45,18 @@
             edit_user_profile($name, $value);
         }
 ?>
-        <h3>Sex</h3>
         <form action="" method="post">
-                <input type="radio" name="gender" value="Female">Female
-                <input type="radio" name="gender" value="Male">Male
-                <input type="radio" name="gender" value="Cat">Cat
-                <input type="radio" name="gender" value="Yes, please.">Yes, please.
-                <input type="radio" name="gender" value="Other" checked>Other</br></br>
-                <input type="submit" name="change_gender" value="Change">
+            Sex
+            </br>
+            <input type="radio" name="gender" value="Female">Female
+            <input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Cat">Cat
+            <input type="radio" name="gender" value="Yes, please.">Yes, please.
+            <input type="radio" name="gender" value="Other" checked>Other
+            </br>
+            <input type="submit" name="change_gender" value="Change">
         </form>
+        </br>
 <?php
         if (isset($_REQUEST['gender'])){
             $name = "gender";
@@ -55,12 +64,16 @@
             edit_user_profile($name, $value);
         }
 ?>
-        <h3>Password</h3>
         <form action="" method="post">
-                <input type="password" name="password" placeholder="Password"></br>
-                <input type="password" name="cpassword" placeholder="Confirm password"></br></br>
-                <input type="submit" name="change_password" value="Change">
+            Password
+            </br>
+            <input type="password" name="password" placeholder="Password">
+            </br>
+            <input type="password" name="cpassword" placeholder="Confirm password">
+            </br>
+            <input type="submit" name="change_password" value="Change">
         </form>
+        </br>
 <?php
         if (isset($_REQUEST['password'])){
             if ($_REQUEST['password'] == $_REQUEST['cpassword']){
@@ -73,9 +86,10 @@
             }
         }
 ?>
-        <h3>Bio</h3>
         <form action="" method="post">
-            <textarea name="bio" rows="10" cols="60"><?php print $user_item['bio'] ?></textarea></br></br>
+            Bio
+            </br>
+            <textarea name="bio" rows="10" cols="60"><?php print $user_item['bio'] ?></textarea></br>
             <input type="submit" name="edit_bio" value="Change">
         </form>
 <?php

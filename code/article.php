@@ -138,11 +138,11 @@
             </html>
 <?php   
         } else {
-            // Show the "Page not found" error, if article id isn't exists.
+            // Show the "Page not found" error, if an article id isn't exists.
             include("page_not_found.php");
         }
     } else {
-        // Show "Page not found" error if article without id.
+        // Show "Page not found" error if an article without id.
         include("page_not_found.php");
     }
 ?>

@@ -8,40 +8,40 @@
 </head>
 <body>
     <h1>Login</h1>
-    <?php
+<?php
         require('db_connection.php');
         session_start();
-        // When form submitted, check and create user sesion.
+        // When form submitted create user session.
         if (isset($_POST['username'])) {
-            $username   = stripslashes($_REQUEST['username']); // removes backslashes
+            $username   = stripslashes($_REQUEST['username']); // Remove backslashes.
             $username   = mysqli_real_escape_string($db_connection, $username);
             $password   = stripslashes($_REQUEST['password']);
             $password   = mysqli_real_escape_string($db_connection, $password);
-            // Checkuser is exist in the database.
-            $query      = "SELECT * FROM `users` WHERE username='$username' AND password='" . md5($password) . "'";
-            $result     = mysqli_query($db_connection, $query) or die(mysql_error());
+            // Check does the user exist in a database.
+            $user_query      = "SELECT * FROM `users` WHERE username='$username' AND password='" . md5($password) . "'";
+            $result     = mysqli_query($db_connection, $user_query) or die(mysql_error());
             $rows       = mysqli_num_rows($result);
 
             if ($rows == 1) {
                 $_SESSION['username'] = $username;
-                // Redirect to user dashboard page.
                 header("Location: index.php");
             } else {
-                echo "<script> alert('Incorrect Username or password') </script></br>";
+                echo "<script> alert('Incorrect Username or Password') </script></br>";
                 echo "<script> window.location='login.php' </script>";
                 exit();
             }
         } else {
-    ?>
+?>
         <form method="post" name="login">
-            <input type="text" name="username" placeholder="Username" autofocus="true"> </br>
-            <input type="password" name="password" placeholder="Password"> </br>
-            <input type="submit" value="Login" name="submit"> </br>
+            <input type="text" name="username" placeholder="Username" autofocus="true">
+            </br>
+            <input type="password" name="password" placeholder="Password">
+            </br>
+            <input type="submit" value="Login" name="submit">
+            </br>
             <p><a href="registration.php">Register</a></p>
         </from>            
-    <?php        
-        }
-    ?>
+<?php   }   ?>
     <p>Back to <a href="index.php">Homepage</a></p>
 </body>
 </html>
