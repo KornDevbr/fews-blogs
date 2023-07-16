@@ -1,0 +1,59 @@
+html {
+    background-image: url(../img/white-concrete-wall.jpg);
+    background-position: center;
+    background-attachment: scroll;
+}
+
+header {
+    background:rgba(0, 0, 0, 0.4);
+    padding: 5px 5px 5px 5px;
+    height: 60px
+}
+
+body {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 0px 200px;
+}
+
+h1 {
+    letter-spacing: 6px;
+    word-spacing: 12px;
+    text-shadow: 1px 1px 3px rgb(65, 65, 65);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+}
+
+h2 {
+    letter-spacing: 3px;
+    word-spacing: 6px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 35px;
+}
+
+.paragraph {
+    text-align: center;
+    border: solid 2px black;
+    margin: 25px auto;
+    padding: 40px 50px;
+    height: 200px;
+    width: 550px;
+    background-color: rgba(231, 231, 226, 0.2);
+    line-height: 1.5;
+    word-spacing: 1px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+
+}
+
+b{
+    font-family: "Brush Script MT", cursive;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1px;
+}
+
+footer {
+    background:rgba(0, 0, 0, 0.4);
+    height: 60px;
+    padding-bottom: 12%;
+}
