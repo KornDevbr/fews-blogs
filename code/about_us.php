@@ -7,9 +7,9 @@
     <title>About Us | Fews Blogs</title>
     <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
     <link href="styles/style.css" rel="stylesheet" />
-    <!-- <link
-        href="https://fonts.googleapis.com/css?family=Open+sans"
-        rel="stylesheet" /> -->
+    <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+    <!-- Icons kit. -->
+    <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
 <header>
     <?php include("user_panel.php")?>
@@ -27,6 +27,7 @@
         <b>Be</b> like everyone, <b>writ</b>e about ev<b>er</b>ything.</p></br>
     <p align="center">Back to <a href="index.php">Homepage</a></p>
 <footer>
+    <i class="fa-brands fa-github"></i>
 </footer>
 </body>
 </html>

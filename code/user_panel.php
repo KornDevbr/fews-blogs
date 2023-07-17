@@ -3,8 +3,7 @@
     // Show register and login invitation for not logged in users.
     if(!isset($_SESSION['username'])) {
         print "<p>
-                    <a href='registration.php'>Register</a>
-                    </br>
+                    <a href='registration.php'>Register</a> 
                     <a href='login.php'>Log In</a>
                 </p>";
     // Show username and logout link for logged in users.

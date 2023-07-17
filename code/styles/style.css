@@ -13,20 +13,20 @@ header {
 body {
     background-color: rgba(255, 255, 255, 0.7);
     margin: 0px 200px;
+    font-family: 'Muli', sans-serif;
 }
 
 h1 {
-    letter-spacing: 6px;
+    letter-spacing: 3px;
     word-spacing: 12px;
-    text-shadow: 1px 1px 3px rgb(65, 65, 65);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* text-shadow: 1px 1px 3px rgb(65, 65, 65); */
+    font-family: 'Space Mono', monospace;
     font-size: 50px;
 }
 
 h2 {
     letter-spacing: 3px;
-    word-spacing: 6px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Space Mono', monospace;
     font-size: 35px;
 }
 
@@ -40,20 +40,33 @@ h2 {
     background-color: rgba(231, 231, 226, 0.2);
     line-height: 1.5;
     word-spacing: 1px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
-
 }
 
 b{
-    font-family: "Brush Script MT", cursive;
+    font-family: "Sofia", cursive;
     font-weight: bold;
-    font-size: 30px;
-    line-height: 1px;
+    font-size: 25px;
+    line-height: 0px;
 }
+
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: black;
+    color: white;
+  }
 
 footer {
     background:rgba(0, 0, 0, 0.4);
     height: 60px;
-    padding-bottom: 12%;
+    padding-bottom: 9%;
 }
