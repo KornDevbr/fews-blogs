@@ -12,9 +12,9 @@
     <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
 <header>
-    <?php include("user_panel.php")?>
+    <?php session_start(); include("user_panel.php")?>
 </header>
-<body>
+<body class="center">
     <h1 align="center">Fews Blogs</h1>
     <h2 align="center">About us</h2>
     <p class="paragraph" align="center">

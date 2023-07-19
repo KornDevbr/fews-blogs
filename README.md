@@ -90,3 +90,18 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
     - Edit comment button (For comment owner);
     - Delete comment button (For comment owner);
     - Comment number; 
+
+## CSS Styling Plan
+Make the `main.css` file with general styling with navigation bar, body, footer. Make separate `.css` files for different pages if needed. Make pages ony by ony. Begin from About us page.
+1. General: 
+    - Create navigation bar with all links (login/logout, register, home, about us, dashboard);
+    - Create footer with contact us and another links information;
+    - Configure website layout.
+2. About us page:
+    - Create Overflow for the box with text;
+    - Make body background not depending on margins when changing the web browser window;
+3. My Articles and My Comments:
+    - Style tables with articles/comments;
+    - Add Publish/unpublish button for my articles page;
+4. Login/Register/Add Article/Add Comment:
+    - Style forms.
