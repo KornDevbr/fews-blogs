@@ -98,8 +98,8 @@ Make the `main.css` file with general styling with navigation bar, body, footer.
     - Create footer with contact us and another links information;
     - Configure website layout.
 2. About us page:
-    - Create Overflow for the box with text;
-    - Make body background not depending on margins when changing the web browser window;
+    - Create Overflow for the box with text; It doesn't need.
+    - ~~Make body background not depending on margins when changing the web browser window size~~;
 3. My Articles and My Comments:
     - Style tables with articles/comments;
     - Add Publish/unpublish button for my articles page;

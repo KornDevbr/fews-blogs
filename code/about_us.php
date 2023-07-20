@@ -25,7 +25,6 @@
         Leave comments about everything under </br>
         everyone's article about everything.</br>
         <b>Be</b> like everyone, <b>writ</b>e about ev<b>er</b>ything.</p></br>
-    <p align="center">Back to <a href="index.php">Homepage</a></p>
 <footer>
     <i class="fa-brands fa-github"></i>
 </footer>
