@@ -1,4 +1,4 @@
-ul{
+.user_panel ul{
     list-style-type: none;
     background-color: #333;
     margin: 0;
@@ -11,11 +11,11 @@ ul{
     top: 0
 }
 
-li {
+.user_panel li {
     float: left;
 }
 
-li a {
+.user_panel li a {
     display: block;
     color: white;
     text-align: center;
@@ -23,27 +23,32 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+.user_panel li a:hover {
     background-color: #111;
 }
 
-li p {
+.user_panel li p {
     margin: 0;
     display: block;
     padding: 14px 16px;
     padding-right: 0;
-    color: white;
+    color: rgb(209, 209, 209);
     text-align: right;
 }
 
-li:last-child {
+.user_panel li:last-child {
     border-left: 1px solid #bbb;
 }
 
-.left {
+.user_panel .left_a {
     border-right: 1px solid #bbb;
 }
 
-.right {
+.user_panel .right_a {
+    float:right;
+    border-right: 1px solid #bbb;
+}
+
+.user_panel .right_p {
     float:right;
 }

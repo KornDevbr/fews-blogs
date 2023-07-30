@@ -24,6 +24,7 @@ h1 {
     word-spacing: 12px;
     font-family: 'Space Mono', monospace;
     font-size: 50px;
+    padding-top: 3%;
 }
 
 h2 {
@@ -36,7 +37,7 @@ h2 {
     text-align: center;
     border: solid 2px black;
     margin: 25px auto;
-    padding: 40px 50px;
+    padding: 2% 3%;
     min-height: 200px;
     max-width: 550px;
     background-color: rgba(231, 231, 226, 0.2);
@@ -69,5 +70,5 @@ b{
 
 footer {
     background:rgba(0, 0, 0, 0.4);
-    padding-top: 7%;
+    /* padding-top: 7%; */
 }

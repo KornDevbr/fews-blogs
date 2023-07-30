@@ -11,7 +11,7 @@
     <!-- Icons kit. -->
     <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
-<header>
+<header class="user_panel">
     <?php session_start(); include("user_panel.php")?>
 </header>
 <body class="center">
@@ -25,8 +25,8 @@
         Leave comments about everything under </br>
         everyone's article about everything.</br>
         <b>Be</b> like everyone, <b>writ</b>e about ev<b>er</b>ything.</p></br>
-<footer>
-    <i class="fa-brands fa-github"></i>
+<footer class="footer">
+    <?php include("footer.php") ?>
 </footer>
 </body>
 </html>
