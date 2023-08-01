@@ -3,7 +3,7 @@
 </head>
 <div class="column">
     <ul>
-        <li><p>Created by</p></li>
+        <li><p>Website created by</p></li>
         <li><a href="mailto:y.korniievskyi@dev-branch.com">@korn</a></li>
         <li><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a></li>
         <li><a href="http://online.budstandart.com/ua/catalog/doc-page?id_doc=71811">ДСТУ 23026:2016</a></li>

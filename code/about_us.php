@@ -24,7 +24,7 @@
         Read what everyone thinks about everything.</br>
         Leave comments about everything under </br>
         everyone's article about everything.</br>
-        <b>Be</b> like everyone, <b>writ</b>e about ev<b>er</b>ything.</p></br>
+        <b class="cursive">Be</b> like everyone, <b class="cursive">writ</b>e about ev<b class="cursive">er</b>ything.</p></br>
 <footer class="footer">
     <?php include("footer.php") ?>
 </footer>
