@@ -18,8 +18,8 @@
 <div class="column">
     <ul>    
         <li><p>Social Media</p></li>
-        <li><i class="fa-brands fa-github"></i><a href="https://github.com/EugeneCorn/fews-blogs">GitHub</a></li>
-        <li><i class="fa-brands fa-instagram"></i><a href="">Instagram</a></li>
-        <li><i class="fa-brands fa-facebook"></i><a href="">Facebook</a></li>
+        <li><i class="fa-brands fa-github"></i><a class="column_3" href="https://github.com/EugeneCorn/fews-blogs">GitHub</a></li>
+        <li><i class="fa-brands fa-instagram"></i><a class="column_3" href="">Instagram</a></li>
+        <li><i class="fa-brands fa-facebook"></i><a class="column_3" href="">Facebook</a></li>
     </ul>
 </div>

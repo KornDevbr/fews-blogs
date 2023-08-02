@@ -14,7 +14,7 @@
 }
 
 /* Make footer in 1 column for screens less than 600px. */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 630px) {
     .footer .column {
       width: 100%;
     }
@@ -43,10 +43,19 @@
 .footer li a {
     text-decoration: none;
     color: white;
-    padding-left: 10%;
+    padding-left: 5%;
 }
 
 .footer li a:hover {
     color: white;
     text-decoration: underline;
+}
+
+.footer i {
+    padding-left: 5%;
+}
+
+.footer .column_3
+{
+    padding-left: 5px;
 }

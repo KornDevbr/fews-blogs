@@ -21,11 +21,11 @@
     font-size: 35px;
     text-decoration: none;
     color: rgb(0, 0, 0);
-    text-shadow: 0px 0px 15px rgb(255, 255, 255);
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
 
 .topic a:hover {
-    color: white;
+    color: rgb(230, 227, 218);
     text-shadow: 0px 0px 15px rgb(0, 0, 0);
 }
 
@@ -76,8 +76,11 @@
 }
 
 .article_content {
-    margin: 20px 0px 20px 20px;
+    margin: 20px;
     font-size: 17px;
+    border-top: 1px rgba(211, 211, 211, 0.788) solid;
+    border-bottom: 1px rgba(211, 211, 211, 0.788) solid;
+    padding-bottom: 10px;
 }
 
 .comment {
