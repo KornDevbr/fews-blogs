@@ -1,4 +1,4 @@
-.user_panel ul{
+.user_panel ul {
     list-style-type: none;
     background-color: #333;
     margin: 0;
@@ -9,6 +9,11 @@
     width: 100%;
     max-width: 1400px;
     top: 0
+}
+
+.user_panel ul:hover {
+    background-color: #4d4d4d;
+    opacity: 95%;
 }
 
 .user_panel li {
@@ -24,7 +29,7 @@
 }
 
 .user_panel li a:hover {
-    background-color: #111;
+    background-color: #272727;
 }
 
 .user_panel li p {

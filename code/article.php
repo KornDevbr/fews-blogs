@@ -1,9 +1,7 @@
 <?php
     session_start();
-    include('user_panel.php');
     require('db_connection.php');
-
-    // Check does article id is not empty.
+    // Check does article ID is not empty.
     if(!empty($_GET['id'])) {
         $article_id = $_GET['id'];
         $article_query =  mysqli_query($db_connection, "SELECT * FROM `articles` 
@@ -24,41 +22,63 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title><?php print $article_item['topic'] ?> | Fews Blogs</title>
+                <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
+                <link href="styles/main.css" rel="stylesheet" />
+                <link href="styles/article.css" rel="stylesheet" />
+                <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+                <!-- Icons kit. -->
+                <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
             </head>
+            <header class="user_panel">
+                <?php include("user_panel.php") ?>
+            </header>
             <body>
 <?php
                 print "
-                    <p>
-                        <b>Create Time:</b>".$article_item['create_datetime']."
-                        </br>
-                        <b>Last Edit:</b>".$article_item['edit_datetime']."
+                <h2 class='topic'>".$article_item['topic']."</h2>
+                <ul class='article_info'>
+                <li class='right'>
+                    <p class='text'>Created by
+                        <a class='user' href='user_profile.php?id=".$article_user_item['id']."'>".$article_item['username']."</a>
                     </p>
-                    <h2 align='center'>".$article_item['topic']."</h2>
-                    </br>
-                    <p align='right'>
-                        Created by: <a href='user_profile.php?id=".$article_user_item['id']."'>".$article_item['username']."</a>
-                    </p>
-                ";
-                // Show "My Articles" link for an article owner.
-                if (isset($_SESSION['username'])){
-                    if($_SESSION['username'] == $article_item['username'])
-                    print "<a href='dashboard.php'>My Articles</a>";
-                }
+                </li>";
+            // Show "Edited" time if article was edit.
+            if ($article_item['edit_datetime'] != null){
+                print "
+                    <li class='left'>
+                            <p class='text'>
+                                Last Edit: 
+                            </p>
+                            <p class='datetime'>
+                                " . $article_item['edit_datetime'] . "
+                            </p>
+                        </li>";
+            } else {
+                print "
+                    <li class='left'>
+                        <p class='text'>
+                            Create: 
+                        </p>
+                        <p class='datetime'>
+                            ".$article_item['create_datetime']."
+                        </p>
+                    </li>";
+            }
+            print "</ul>
+                    <br>";
 ?>
-                <p align="center"><?php print $article_item['content']?></p>
-                <p align="center">Back to <a href=index.php>Homepage</a></p>
-                <p align="center">Comments</p>
+                <p class="article_content"><?php print $article_item['content']?></p>
+                <p class="comment">Comments</p>
 <?php           
                 // Show the "Add Comment" form for logged in users.
                 if (isset($_SESSION['username'])) {
 ?>
                     <form action="" method="post">
-                        <p>Add Comment</p>
                         <textarea 
                             name="comment" 
                             rows="2" 
                             cols="60"
-                            placeholder="Text here"
+                            placeholder="Add comment"
                             required></textarea> </br>
                         <input type="submit" name="add_comment" value="Add Comment">
                     </form>
@@ -135,6 +155,9 @@
                 }
             </script>
             </body>
+            <footer class="footer">
+                <?php include("footer.php") ?>
+            </footer>
             </html>
 <?php   
         } else {

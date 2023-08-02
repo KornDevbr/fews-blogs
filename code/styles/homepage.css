@@ -81,6 +81,7 @@
     border-top: 1px rgba(211, 211, 211, 0.788) solid;
     border-bottom: 1px rgba(211, 211, 211, 0.788) solid;
     padding-bottom: 10px;
+    text-indent: 30px;
 }
 
 .comment {
