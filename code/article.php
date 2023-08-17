@@ -37,11 +37,11 @@
                 print "
                 <h2 class='topic'>".$article_item['topic']."</h2>
                 <ul class='article_info'>
-                <li class='right'>
-                    <p class='text'>Created by
-                        <a class='user' href='user_profile.php?id=".$article_user_item['id']."'>".$article_item['username']."</a>
-                    </p>
-                </li>";
+                    <li class='right'>
+                        <p class='text'>Created by
+                            <a href='user_profile.php?id=".$article_user_item['id']."'>".$article_item['username']."</a>
+                        </p>
+                    </li>";
             // Show "Edited" time if article was edit.
             if ($article_item['edit_datetime'] != null){
                 print "
@@ -64,8 +64,7 @@
                         </p>
                     </li>";
             }
-            print "</ul>
-                    <br>";
+            print "</ul>";
 ?>
                 <p class="article_content"><?php print $article_item['content']?></p>
                 <p class="comment">Comments</p>
@@ -78,9 +77,9 @@
                             name="comment" 
                             rows="2" 
                             cols="60"
-                            placeholder="Add comment"
+                            placeholder="Start to enter a comment..."
                             required></textarea> </br>
-                        <input type="submit" name="add_comment" value="Add Comment">
+                        <input type="submit" name="add_comment" value="Add">
                     </form>
 <?php           }
             // Add comment block.
@@ -108,9 +107,9 @@
                     or die(mysqli_error());
 
                 if ($comment_create_query){
-                    print "The comment has been add.";
+                    print "<p class='comment_info'>The comment added!</p>";
                 } else{
-                    print "ERROR: The comment hasn't add.";
+                    print "ERROR: The wasn't add.";
                 }
             }
             $comment_list_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
@@ -120,26 +119,47 @@
             if ($count_comment_list > 0) {
                 $n = 1;
                 while ($comment_list_item = mysqli_fetch_array($comment_list_query)){
-                    print "<p>
-                        #".$n++." "."
-                        <a href='user_profile.php?id=".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a> "
-                        .$comment_list_item['create_datetime']."
-                        </br>
-                    ";
+                    print "
+                        <ul class='comment_list'>
+                            <li class='left'>
+                                <p> #".$n++." "."</p>
+                            </li>
+                            <li class='left'>
+                                <p>            
+                                    <a class='comment_user'href='user_profile.php?id=".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a>
+                                </p>
+                            </li>";
                     // Show edit date and time if the comment edited.
                     if ($comment_list_item['edit_datetime'] != null){
-                        print "Edited: ".$comment_list_item['edit_datetime']."
-                        </br>";
+                        print "<li class='left'>
+                                    <p>".$comment_list_item['edit_datetime']."</p>
+                                </li>";
+                    } else {
+                        print "<li class='left'>
+                                    <p>".$comment_list_item['create_datetime']."</p>
+                                </li>";
                     }
-                    print  $comment_list_item['comment']."</br>";
                     // Show "Edit" and "Delete" links for the comment owner.
                     if(isset($_SESSION['username'])){
                         if($_SESSION['username'] == $comment_list_item['username']){
-                            print "<a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a> ";  
-                            print "<a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a>";
+                            print "<li class='left'>
+                                        <div class='comment_dropdown'>
+                                            <button class='comment_dropdown_button'><i class='fa-solid fa-bars'></i></button>
+                                                <div class='comment_dropdown_content'>
+                                                    <a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a>
+                                                    <a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a>
+                                                </div>
+                                        </div>
+                                    </li>";
                         }
-                    "</p>";
                     }
+                    if ($comment_list_item['edit_datetime'] != null){
+                        print "<li class='left'>
+                                    <p class='comment_edited'>Edited</p>
+                                </li>";
+                    } 
+                    print "</ul>";
+                    print  "<p class='comment_content'>".$comment_list_item['comment']."</p>";
                 }
             } else {
                     print "<h3 align='center'>Nobody hasn't left any comment yet. Be the first one!</h3>";
