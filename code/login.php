@@ -5,12 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Fews Blogs</title>
+    <link href="styles/main.css" rel="stylesheet"/>
+    <link href="styles/login.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+    <!-- Icons kit. -->
+    <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
+<header class="user_panel">
+    <?php include("user_panel.php") ?>
+</header>
 <body>
     <h1>Login</h1>
 <?php
         require('db_connection.php');
         session_start();
+
         // When form submitted create user session.
         if (isset($_POST['username'])) {
             $username   = stripslashes($_REQUEST['username']); // Remove backslashes.
@@ -39,9 +48,11 @@
             </br>
             <input type="submit" value="Login" name="submit">
             </br>
-            <p><a href="registration.php">Register</a></p>
+            <p>Don't have an account yet? <a href="registration.php">Register</a></p>
         </from>            
 <?php   }   ?>
-    <p>Back to <a href="index.php">Homepage</a></p>
 </body>
+<footer class="footer">
+    <?php include("footer.php") ?>
+</footer>
 </html>
