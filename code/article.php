@@ -79,6 +79,7 @@
                             cols="60"
                             placeholder="Start to enter a comment..."
                             required></textarea> </br>
+                        <div class=comment_add_button>
                         <input type="submit" name="add_comment" value="Add">
                     </form>
 <?php           }
@@ -112,6 +113,7 @@
                     print "ERROR: The wasn't add.";
                 }
             }
+            print "</div>";
             $comment_list_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
                 WHERE article_id='$article_id' ORDER BY create_datetime");
             $count_comment_list = mysqli_num_rows($comment_list_query);
@@ -121,28 +123,28 @@
                 while ($comment_list_item = mysqli_fetch_array($comment_list_query)){
                     print "
                         <ul class='comment_list'>
-                            <li class='left'>
+                            <li>
                                 <p> #".$n++." "."</p>
                             </li>
-                            <li class='left'>
+                            <li>
                                 <p>            
                                     <a class='comment_user'href='user_profile.php?id=".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a>
                                 </p>
                             </li>";
                     // Show edit date and time if the comment edited.
                     if ($comment_list_item['edit_datetime'] != null){
-                        print "<li class='left'>
+                        print "<li>
                                     <p>".$comment_list_item['edit_datetime']."</p>
                                 </li>";
                     } else {
-                        print "<li class='left'>
+                        print "<li>
                                     <p>".$comment_list_item['create_datetime']."</p>
                                 </li>";
                     }
                     // Show "Edit" and "Delete" links for the comment owner.
                     if(isset($_SESSION['username'])){
                         if($_SESSION['username'] == $comment_list_item['username']){
-                            print "<li class='left'>
+                            print "<li>
                                         <div class='comment_dropdown'>
                                             <button class='comment_dropdown_button'><i class='fa-solid fa-bars'></i></button>
                                                 <div class='comment_dropdown_content'>
@@ -154,7 +156,7 @@
                         }
                     }
                     if ($comment_list_item['edit_datetime'] != null){
-                        print "<li class='left'>
+                        print "<li>
                                     <p class='comment_edited'>Edited</p>
                                 </li>";
                     } 
@@ -162,7 +164,7 @@
                     print  "<p class='comment_content'>".$comment_list_item['comment']."</p>";
                 }
             } else {
-                    print "<h3 align='center'>Nobody hasn't left any comment yet. Be the first one!</h3>";
+                    print "<p class='comment_no_comment'>Nobody hasn't left any comment yet. Be the first one!</p>";
             }
 ?>
             <script>

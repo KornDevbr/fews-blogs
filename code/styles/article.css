@@ -87,6 +87,10 @@ textarea:focus {
     width: 70%;
 }
 
+.comment_add_button {
+    display: flex;
+}
+
 input[type=submit] {
     margin-left: 30px;
     border: 1px solid #d1d1d1a1;
@@ -105,17 +109,18 @@ input[type=submit]:hover{
 }
 
 .comment_info {
+    margin: 0px 0px 0px 40px;
     font-size: 18px;
-    font-family: 'Muli', sans-serif;
 }
 
 .comment_list {
     list-style-type: none;
-    margin: 0px 20px 0px 20px;
+    margin: 0px 20px 0px 60px;
     padding: 2px 0px 2px 10px;
     display: flex;
     background-color: rgba(0, 0, 0, 0.137);
     color: black;
+    width: 1000px;
 }
 
 .comment_list li p {
@@ -124,9 +129,11 @@ input[type=submit]:hover{
 }
 
 .comment_user {
-    margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 7px;
     text-decoration: none;
-    color: black;
+    color: white;
+    text-shadow: 0px 0px 5px black;
     font-size: 17px;
     font-style: italic;
 }
@@ -134,7 +141,8 @@ input[type=submit]:hover{
 .comment_user:hover {
     text-decoration: none;
     font-size: 17px;
-    text-decoration: underline;
+    color: rgb(255, 238, 186);
+    text-shadow: 0px 0px 7px black;
 }
 
 .comment_edited {
@@ -183,8 +191,17 @@ input[type=submit]:hover{
   }
 
 .comment_content {
-    margin: 0px 20px 0px 20px;
+    margin: 0px 20px 0px 60px;
     padding: 20px 20px 20px 20px;
-    background-color: #ffffff;
+    background-color: rgba(255, 238, 186, 0.090);
     font-size: 18px;
+    width: 970px;
+}
+
+.comment_no_comment {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Space Mono', monospace;
 }
