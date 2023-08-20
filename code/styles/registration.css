@@ -1,0 +1,75 @@
+h1 {
+    margin: 0px 0px 10px 100px;
+    padding-top: 70px;
+}
+
+p {
+    margin: 10px 0px 0px 70px;
+}
+
+.inline {
+    display: flex;
+}
+
+.asterisk {
+    margin-left: 5px;
+    color: red;
+}
+
+input {
+    width: 500px;
+    margin: 10px 0px 10px 70px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: rgba(255, 238, 186, 0.090);
+}
+
+input[type=radio]{
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 20px;
+}
+
+input[value=Female] {
+    margin-left: 70px;
+}
+
+textarea {
+    margin-top: 10px;
+    width: 500px;
+    height: 200px;
+    margin-left: 70px;
+    font-size: 17px;
+    font-family: 'Muli', sans-serif;
+    resize: none;
+}
+
+input[type=submit] {
+    background-color: rgb(77, 77, 77);
+    color: white;
+    border: none;
+    font-size: 19px;
+    margin-bottom: 0;
+    width: 510px;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+a {
+    color:black
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.link {
+    margin-left: 150px;
+    padding-bottom: 10px;
+}

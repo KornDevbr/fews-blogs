@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration | Fews Blogs</title>
+    <link href="styles/main.css" rel="stylesheet"/>
+    <link href="styles/registration.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+    <!-- Icons kit. -->
+    <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
+<header class="user_panel">
+    <?php include("user_panel.php") ?>
+</header>
 <body>
-    <h1>Fews Blogs Registration</h1>
-    <h3>Please fill the registration form</h3> </br>
 <?php
     require('db_connection.php');
     // When form submitted insert values into the database.
@@ -68,38 +74,40 @@
 ?>
     <form action="" method="post">
         <h1>Registration</h1>
-        <p>Username
-        </br>
-        <input type="text" name="username" placeholder="Username" required>
-        </br></br>
-        Email
-        </br>
+        <div class="inline">
+            <p>Username</p>
+            <p class="asterisk">*</p>
+        </div>
+        <input type="text" name="username" required>
+        <div class="inline">
+            <p>Email</p>
+            <p class="asterisk">*</p>
+        </div>
         <input type="email" name="email" placeholder="email@example.com" required>
-        </br></br>
-        Password
+        <div class="inline">
+            <p>Password</p>
+            <p class="asterisk">*</p>
+        </div>
+        <input type="password" name="password" required>
         </br>
-        <input type="password" name="password" placeholder="Password" required>
-        </br></br>
         <input type="password" name="cpassword" placeholder="Confirm password" required>
-        </br></br>
-        Sex
-        </br>
+        <p>Sex</p>
             <input type="radio" name="gender" value="Female">Female
             <input type="radio" name="gender" value="Male">Male
             <input type="radio" name="gender" value="Cat">Cat
             <input type="radio" name="gender" value="Yes, please.">Yes, please.
             <input type="radio" name="gender" value="Other" checked>Other
-        </br></br>
-        Bio </br>
-        <textarea name="bio" rows="10" cols="60"></textarea> </br>
+        <p>Bio</p>
+        <textarea name="bio" rows="10" cols="60"></textarea><br>
         <!-- Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br> -->
-        </br>
         <input type="submit" name="submit" value="Register"></p>
         <p class="link">Already registered? <a href="login.php">Login</a> to our website</p>
-        <p>Back to <a href="index.php">Home page</a></p>
     </form>
 <?php
     }
 ?>
 </body>
+<footer class="footer">
+    <?php include("footer.php") ?>
+</footer>
 </html>

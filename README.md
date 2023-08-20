@@ -67,7 +67,7 @@ This is the [@korn](mailto:y.korniievskyi@dev-branch.com) website for studying a
     - username;
     - username_id;
     - username_email.   :white_check_mark:
-2. ~~Create the `comment_add.php` page: ~~
+2. ~~Create the `comment_add.php` page:~~
     - Form for adding a comment;
     - Database query with adding a comment; :white_check_mark: (Made it on the `article.php` page.)
 3. ~~Create the `comment_edit.php` page:~~
