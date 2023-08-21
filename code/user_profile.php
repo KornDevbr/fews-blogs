@@ -1,8 +1,6 @@
 <?php
     session_start();
-    include("user_panel.php");
     require("db_connection.php");
-    
     // Check does user id is not empty.
     if(!empty($_GET['id'])) {
         $user_id = $_GET['id'];
@@ -10,7 +8,6 @@
             WHERE id='$user_id'");
         $user_item  = mysqli_fetch_array($user_query);
         $count = mysqli_num_rows($user_query);
-        
         // Check does user exists.
         if($count > 0) {
             $username   = $user_item['username'];
@@ -24,62 +21,64 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title><?php print $username ?> | Fews Blogs</title>
+                <link href="styles/main.css" rel="stylesheet" />
+                <link href="styles/user_profile.css" rel="stylesheet" />
+                <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+                <!-- Icons kit. -->
+                <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
             </head>
+            <header class="user_panel">
+                <?php include("user_panel.php") ?>
+            </header>
             <body>
-<?php           print "<h1>" . $username . "'s profile page</h1>";
+<?php           print "<h1>".$username."'s profile page</h1>";
                 // Check does user logged in.
                 if(isset($_SESSION['username'])){
                     // Check does logged and watching the page usernames are the same.
                     if($_SESSION['username'] == $username){
-                        print "<a href='user_profile_edit.php'>Edit user profile</a>";
+                        print "<p class='edit'><a href='user_profile_edit.php'>Edit profile page</a></p>";
                     }
                 }
-
-?>              <p>
-                    <b>Registration date:</b> <?php print $user_item['create_datetime'] ?>
-                    </br></br>
-                    <b>Sex:</b> <?php print $user_item['gender'] ?>
-                    </br></br>
-                    <b>Email:</b> <a href="mailto:<?php print $user_item['email'] ?>"><?php print $user_item['email'] ?></a>
-                    </br></br>
-                    <b>Bio:</b>
-                    </br>
-<?php           print $user_item['bio']."
-                </p>";
-                print "<p>Back to <a href='index.php'>Homepage</a></p>";
-                
+?>              <div class="user_info">
+                    <p class="first_item">Registration date:</p>
+                    <p class="second_item"> <?php print $user_item['create_datetime'] ?> </p>
+                </div>
+                <div class="user_info">
+                    <p class="first_item">Sex:</p>
+                    <p class="second_item"><?php print $user_item['gender'] ?></p>
+                </div>
+                <div class="user_info">
+                    <p class="first_item">Email:</p>
+                    <p class="second_item"><a href="mailto:<?php print $user_item['email'] ?>"><?php print $user_item['email'] ?></a></p>
+                </div>
+                <div class="user_info">
+                    <p class="first_item">Bio:</p>
+<?php               print "<p class='second_item'>".$user_item['bio']."</p>";
+                    print "</div>";
                 // Function for showing printed articles not for page owner.
                 function articles_list(){
                     global $user_item, $article_query;
-                    print "<h2 align='center'>" . $user_item['username'] . "'s articles</h2>";
+                    print "<h2>".$user_item['username']."'s published articles</h2>";
                     $count = mysqli_num_rows($article_query);
                     // Show articles if their quantity is more than zero.
                     if ($count > 0) {
                         while ($article_item = mysqli_fetch_array($article_query)) {
-                            print "<h3><a href='article.php?id=" . $article_item['article_id'] . "'>" . $article_item['topic'] . "</a></h3>";
-                            print "<p><b>Created:</b> " . $article_item['create_datetime'] . "</p>";
+                            print "<div class='article_list'>";
+                                print "<p><a href='article.php?id=" . $article_item['article_id'] . "'>" . $article_item['topic'] . "</a></p>";
+                                print "<p class='article_date'><b>Created:</b> " . $article_item['create_datetime'] . "</p>";
+                            print "</div>";
                         }
                     // Show message if user didn't make any article.
                     } else {
-                        print "<h3 align='center'>This user didn't make any articles yet. :(</h3>";
+                        print "<h3>This user didn't make any articles yet. :(</h3>";
                     }
                 }
                 // Check does user logged in.
-                if(isset($_SESSION['username'])){
-                    // Check does logged and watching the page usernames are the same.
-                    if($_SESSION['username'] == $username){
-                        print "
-                            <a href='dashboard.php'>My Articles</a>
-                            </br>
-                            <a href='my_comments.php'>My Comments</a>
-                        ";
-                    } else {
-                        articles_list();
-                    }
-                } else {
-                    articles_list();
-                }
+                articles_list();
 ?>          </body>
+            <footer class="footer">
+                <?php include("footer.php") ?>
+            </footer>
             </html>
 <?php   } else {
             // Show the "Page not found" error, if a user id isn't exists.
