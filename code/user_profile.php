@@ -65,7 +65,11 @@
                         while ($article_item = mysqli_fetch_array($article_query)) {
                             print "<div class='article_list'>";
                                 print "<p><a href='article.php?id=" . $article_item['article_id'] . "'>" . $article_item['topic'] . "</a></p>";
-                                print "<p class='article_date'><b>Created:</b> " . $article_item['create_datetime'] . "</p>";
+                                if ($article_item['edit_datetime'] != null) {
+                                    print "<p class='article_date'><b>Updated:</b> " . $article_item['edit_datetime'] . "</p>";
+                                } else {
+                                    print "<p class='article_date'><b>Created:</b> " . $article_item['create_datetime'] . "</p>";
+                                }
                             print "</div>";
                         }
                     // Show message if user didn't make any article.

@@ -25,19 +25,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>User Profile Edit | Fews News</title>
+        <link href="styles/main.css" rel="stylesheet"/>
+        <link href="styles/user_profile_edit.css" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+        <!-- Icons kit. -->
+        <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
     </head>
+    <header class="user_panel">
+        <?php include("user_panel.php") ?>
+    </header>
     <body>
-        <h1>User Profile Edit</h1>
-        <p>Back to 
-            <a href="user_profile.php?id=<?php print $user_item['id'] ?>">Profile page</a>
-        </p>
+        <h1>Profile Edit</h1>
         <form action="" method="post">
-            Email address
-            </br>
-            <input type="email" name="email">
+            <p>Email address</p>
+            <input type="email" name="email" placeholder="email@example.com">
+            <br>
             <input type="submit" name="change_email" value="Change">
         </form>
-        </br>
 <?php
         if (isset($_REQUEST['email'])) {
             $name = "email";
@@ -46,8 +50,7 @@
         }
 ?>
         <form action="" method="post">
-            Sex
-            </br>
+            <p>Sex</p>
             <input type="radio" name="gender" value="Female">Female
             <input type="radio" name="gender" value="Male">Male
             <input type="radio" name="gender" value="Cat">Cat
@@ -56,7 +59,6 @@
             </br>
             <input type="submit" name="change_gender" value="Change">
         </form>
-        </br>
 <?php
         if (isset($_REQUEST['gender'])){
             $name = "gender";
@@ -65,15 +67,13 @@
         }
 ?>
         <form action="" method="post">
-            Password
-            </br>
+            <p>Password</p>
             <input type="password" name="password" placeholder="Password">
             </br>
             <input type="password" name="cpassword" placeholder="Confirm password">
             </br>
             <input type="submit" name="change_password" value="Change">
         </form>
-        </br>
 <?php
         if (isset($_REQUEST['password'])){
             if ($_REQUEST['password'] == $_REQUEST['cpassword']){
@@ -87,10 +87,11 @@
         }
 ?>
         <form action="" method="post">
-            Bio
-            </br>
-            <textarea name="bio" rows="10" cols="60"><?php print $user_item['bio'] ?></textarea></br>
-            <input type="submit" name="edit_bio" value="Change">
+            <p>Bio</p>
+            <textarea name="bio" rows="10" cols="60"><?php print $user_item['bio'] ?></textarea>
+            <div class="bio_change">
+                <input type="submit" name="edit_bio" value="Change">
+            </div>
         </form>
 <?php
         if (isset($_REQUEST['bio'])){
@@ -100,4 +101,7 @@
         }
 ?>
     </body>
+    <footer class="footer">
+        <?php include("footer.php") ?>
+    </footer>
     </html>

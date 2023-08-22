@@ -4,7 +4,7 @@ h1 {
 }
 
 p {
-    margin: 10px 0px 0px 70px;
+    margin: 25px 0px 10px 70px;
 }
 
 .inline {
@@ -18,7 +18,7 @@ p {
 
 input {
     width: 500px;
-    margin: 10px 0px 10px 70px;
+    margin: 0px 0px 10px 70px;
     padding: 10px;
     box-sizing: border-box;
     font-size: 17px;
@@ -39,8 +39,8 @@ input[value=Female] {
 }
 
 textarea {
-    margin-top: 10px;
-    width: 500px;
+    margin-top: 0px;
+    width: 492px;
     height: 200px;
     margin-left: 70px;
     font-size: 17px;
@@ -49,28 +49,21 @@ textarea {
 }
 
 input[type=submit] {
-    background-color: rgb(77, 77, 77);
+    background-color: rgb(107, 107, 107);
     color: white;
     border: none;
     font-size: 19px;
-    margin-bottom: 0;
-    width: 509px;
+    margin-top: 0;
+    margin-bottom: 0px;
+    width: 100px;
     cursor: pointer;
 }
 
 input[type=submit]:hover {
-    background-color: rgb(100, 100, 100);
+    background-color: rgba(77, 77, 77);
 }
 
-a {
-    color:black
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.link {
-    margin-left: 150px;
-    padding-bottom: 10px;
+input[name=edit_bio] {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
