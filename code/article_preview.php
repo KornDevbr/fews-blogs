@@ -1,7 +1,6 @@
 <?php
     include('auth_session.php');
     require('db_connection.php');
-    include('user_panel.php');
 
     // Check does article id is not empty.
     if(!empty($_GET['id'])) {
@@ -24,51 +23,84 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title><?php print $article_item['topic']?> | Fews Blogs</title>
+                <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
+                <link href="styles/main.css" rel="stylesheet" />
+                <link href="styles/article_preview.css" rel="stylesheet" />
+                <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+                <!-- Icons kit. -->
+                <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
             </head>
+            <header class="user_panel">
+                <?php include("user_panel.php") ?>
+            </header>
             <body>
-                <h1>Preview Page</h1>
-                <a href="dashboard.php">My Articles</a></br>
-                <a href="edit_article.php?id=<?php print $article_item['article_id'] ?>">Edit Article</a>
-                <p><b>Published:</b> <?php print $article_item['public']?></p>
-<?php
-                // Appear "Show published article link when article is published."
-                if ($article_item['public'] == "yes") {
-                    print "<a href='article.php?id=" . $article_id . "'>Show published article</a>";
-                }
-
-                print "<p><b>Create Time:</b> ".$article_item['create_datetime']."</br>";
-                // Show edited time if edit_datetime is not null.
-                if ($article_item['edit_datetime'] != null){
-                    print "<b>Edit Time:</b> ".$article_item['edit_datetime']."</p>";
-                }
-
-                print "
-                    <h2 align='center'>".$article_item['topic']."</h2>
-                    <p align='right'>Created by: <a href='user_profile.php?id=".$user_item['id']."'>".$article_item['username']."</a></p>
-                    <p align='center'>".$article_item['content']."</p>
-                ";
-
-                $comment_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
-                    WHERE article_id='$article_id'");
-                $count = mysqli_num_rows($comment_query);
-                // Show comments if comments quantity bigger than zero.
-                if ($count > 0) {
-                    print "<p align='center'>Comments</p>";
-                    $n = 1;
-                    while ($comment_list_item = mysqli_fetch_array($comment_query)){
-                        print "
-                            <p>#".$n++." "."
-                            <a href='user_profile.php?id=".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a> "
-                            .$comment_list_item['create_datetime']."</br>
-                        ";
-                        if ($comment_list_item['edit_datetime'] != null){
-                            print "Edited: ".$comment_list_item['edit_datetime']."</br>";
+                <div class='title'>
+                    <p class='preview'>Preview Page</p>
+                    <p class='edit'><a href="edit_article.php?id=<?php print $article_item['article_id'] ?>">Edit Article</a></p>
+                </div>
+<?php               
+                    print "<h2 class='article_topic'>".$article_item['topic']."</h2>";
+                    print "<div class='article_info'>";
+                        // Show edited time if edit_datetime is not null.
+                        if ($article_item['edit_datetime'] != null){
+                            print "<p><b>Updated:</b> ".$article_item['edit_datetime']."</p>";
+                        } else {
+                            print "<p><b>Create Time:</b> ".$article_item['create_datetime']."</p>";
                         }
-                   print  $comment_list_item['comment']."</br>";
+                    print "
+                        <p><b>Published:</b>".$article_item['public']."</p>
+                        <p class='text'>Created by: <a class='link' href='user_profile.php?id=".$user_item['id']."'>".$article_item['username']."</a></p>
+                    ";
+                print "</div>";
+                print "
+                    <p class='article_content'>".$article_item['content']."</p>
+                ";
+                
+                print "<p class='comment'>Comments</p>";
+
+                $comment_list_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
+                    WHERE article_id='$article_id'");
+                $count_comment_list = mysqli_num_rows($comment_list_query);
+                // Show comments if comments quantity bigger than zero.
+// Show comments if they are exists.
+            if ($count_comment_list > 0) {
+                $n = 1;
+                while ($comment_list_item = mysqli_fetch_array($comment_list_query)){
+                    print "
+                        <ul class='comment_list'>
+                            <li>
+                                <p> #".$n++." "."</p>
+                            </li>
+                            <li>
+                                <p>            
+                                    <a class='comment_user'href='user_profile.php?id=".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a>
+                                </p>
+                            </li>";
+                    // Show edit date and time if the comment edited.
+                    if ($comment_list_item['edit_datetime'] != null){
+                        print "<li>
+                                    <p>".$comment_list_item['edit_datetime']."</p>
+                                </li>";
+                    } else {
+                        print "<li>
+                                    <p>".$comment_list_item['create_datetime']."</p>
+                                </li>";
                     }
+                    if ($comment_list_item['edit_datetime'] != null){
+                        print "<li>
+                                    <p class='comment_edited'>Edited</p>
+                                </li>";
+                    } 
+                    print "</ul>";
+                    print  "<p class='comment_content'>".$comment_list_item['comment']."</p>";
                 }
+            }
 ?>
+            <br class='nothing'>
             </body>
+            <footer class="footer">
+                <?php include("footer.php") ?>
+            </footer>
             </html>
 <?php
         // Show "Page not found" if article id isn't exists.

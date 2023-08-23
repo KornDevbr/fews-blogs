@@ -176,6 +176,7 @@
                     }
                 }
             </script>
+            <br>
             </body>
             <footer class="footer">
                 <?php include("footer.php") ?>

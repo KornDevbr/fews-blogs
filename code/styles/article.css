@@ -196,6 +196,7 @@ input[type=submit]:hover{
     background-color: rgba(255, 238, 186, 0.090);
     font-size: 18px;
     width: 970px;
+    border-bottom: solid rgba(126, 126, 126, 0.616) 1px;
 }
 
 .comment_no_comment {

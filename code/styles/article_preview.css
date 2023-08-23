@@ -1,0 +1,132 @@
+.title {
+    margin: 0px 30px 5px 30px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid black 1px;
+}
+
+.preview {
+    margin: 0;
+    font-size: 40px;
+    letter-spacing: 3px;
+    font-family: 'Space Mono', monospace;
+}
+
+.title p a {
+    text-decoration: none;
+    background-color: rgba(85, 85, 85, 0.600);
+    color: white;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+}
+
+.title p a:hover {
+    background-color: rgba(54, 54, 54, 0.750);
+    color: white;
+}
+
+.article_info {
+    list-style-type: none;
+    margin: 0px 30px 0px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.article_info p {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    float: left;
+    font-size: 18px;
+}
+
+.article_topic {
+    text-align: center;
+    margin: 0;
+}
+
+.article_content {
+    margin: 0px 30px 30px 30px;
+    text-indent: 30px;
+    font-size: 19px;
+    padding-bottom: 10px;
+    line-height: 1.4;
+    border-top: solid 20px rgba(122, 122, 122, 0.082);
+    border-bottom: solid 20px rgba(122, 122, 122, 0.082);
+}
+
+.text {
+    list-style-type: none;
+    color: rgb(85, 85, 85);
+    /* padding-right: 5px; */
+    font-style: italic;
+    text-align: right;
+    /* margin: 0px 20px 0px 0px; */
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.comment {
+    margin: 0px 0px 10px 50px;
+    letter-spacing: 3px;
+    font-family: 'Space Mono', monospace;
+    font-size: 35px;   
+}
+
+.comment_list {
+    list-style-type: none;
+    margin: 0px 20px 0px 60px;
+    padding: 2px 0px 2px 10px;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.137);
+    color: black;
+    width: 1000px;
+}
+
+.comment_list li p {
+    font-size: 16px;
+    margin: 0px 5px 0px 0px;
+}
+
+.comment_user {
+    margin-left: 5px;
+    margin-right: 7px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.comment_user:hover {
+    text-decoration: none;
+    font-size: 17px;
+    color: rgb(255, 238, 186);
+    text-shadow: 0px 0px 7px black;
+}
+
+.comment_edited {
+    font-style: italic;
+}
+
+.comment_content {
+    margin: 0px 20px 0px 60px;
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(255, 238, 186, 0.090);
+    font-size: 18px;
+    width: 970px;
+    border-bottom: solid rgba(126, 126, 126, 0.616) 1px;
+}
