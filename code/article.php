@@ -110,7 +110,7 @@
                 if ($comment_create_query){
                     print "<p class='comment_info'>The comment added!</p>";
                 } else{
-                    print "ERROR: The wasn't add.";
+                    print "<p class='comment_info'>ERROR: The comment wasn't add.</p>";
                 }
             }
             print "</div>";
