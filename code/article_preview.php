@@ -45,7 +45,7 @@
                         if ($article_item['edit_datetime'] != null){
                             print "<p><b>Updated:</b> ".$article_item['edit_datetime']."</p>";
                         } else {
-                            print "<p><b>Create Time:</b> ".$article_item['create_datetime']."</p>";
+                            print "<p><b>Created:</b> ".$article_item['create_datetime']."</p>";
                         }
                     print "
                         <p><b>Published:</b>".$article_item['public']."</p>

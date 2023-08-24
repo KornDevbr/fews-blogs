@@ -1,0 +1,117 @@
+h1 {
+    margin: 0;
+    margin: 0px 60px 5px 130px;
+    padding-top: 50px;
+    font-size: 40px;
+    letter-spacing: 3px;
+    font-family: 'Space Mono', monospace;
+}
+
+.congrats {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.congrats_title {
+    letter-spacing: 3px;
+    font-family: 'Space Mono', monospace;
+    font-size: 35px;  
+    margin-top: 15px;
+}
+
+.congrats_text {
+    font-size: 25px;
+}
+
+.congrats p a {
+    text-decoration: none;
+    background-color: rgba(85, 85, 85, 0.600);
+    color: white;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+}
+
+.congrats p a:hover {
+    background-color: rgba(54, 54, 54, 0.750);
+    color: white;
+}
+
+.title {
+    margin: 20px 0px 0px 100px;
+    letter-spacing: 3px;
+    font-family: 'Space Mono', monospace;
+    font-size: 35px;   
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 88%;
+    height: 40px;
+    font-size: 17px;
+    font-family: 'Muli', sans-serif;
+    box-sizing: border-box;
+    border: 2px solid #525252a1;
+    border-radius: 5px;
+    background-color: #ffffff;
+    resize: none;
+}
+
+textarea[name=content] {
+    height: 100px;
+}
+
+.add_button {
+    margin-top: 20px;
+    margin-left: 100px;
+    display: flex;
+}
+
+input[type=submit] {
+    border: 1px solid #d1d1d1a1;
+    border-radius: 5px;
+    padding: 8px 30px;
+    font-size: 18px;
+    font-family: 'Muli', sans-serif;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgb(78, 78, 78);
+    margin-bottom: 20px;
+}
+
+input[type=submit]:hover{
+    background-color: rgb(53, 53, 53);
+}
+
+.publish {
+    margin: 0px 0px 0px 20px;
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+input[type=checkbox] {
+    height: 18px;
+    width: 18px
+}
+
+.info_panel {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 88%;
+}
+
+.article_info {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.055);
+}
+
+.article_info p {
+    margin: 0;
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 20px;
+}

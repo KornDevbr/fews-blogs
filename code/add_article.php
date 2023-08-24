@@ -1,6 +1,5 @@
 <?php
     include("auth_session.php");
-    include("user_panel.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Article | Fews Blogs</title>
+    <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/add_edit_article.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+    <!-- Icons kit. -->
+    <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
+<header class="user_panel">
+    <?php include("user_panel.php") ?>
+</header>
 <body>
     <h1>Add Article</h1>
 <?php
@@ -35,26 +43,33 @@
         
         if ($result) {
             print "
-                <h2>Congratulations!</h2> 
-                <h3>You added the article!</h3>
-                <p><a href='dashboard.php'>My Articles</a></p></br>
-                <p><a href='add_article.php'>Add another</a> article</p>";
+                <div class='congrats'>
+                    <p class='congrats_title'>Congratulations!</p> 
+                    <p class='congrats_text'>You added the article!</p>
+                    <p><a href='add_article.php'>Add another article</a></p>
+                </div>";
         } else {
             echo "<p>ERROR: Something went wrong. Article wasn't add. :(</p>";
         }
     } else {
 ?>
         <form action="" method="post">
-            <p>Back to <a href="dashboard.php">My Articles</a></p>
-            <h3>Topic</h3>
-            <textarea name="topic" rows="2" cols="60" required></textarea></br>
-            <h3>Content</h3>
-            <textarea name="content" rows="20" cols="60" required></textarea></br>
-            Publish? <input type="checkbox" name="publish[]" value="yes"> 
-            <input type="submit" value="Add" name="add"></br>
+            <p class='title'>Topic</p>
+            <div class='align_textarea>'>
+                <textarea name="topic" rows="2" cols="60" required></textarea>
+            </div>
+            <p class='title'>Content</p>
+            <textarea name="content" rows="20" cols="60" required></textarea>
+            <div class='add_button'>
+                <input type="submit" value="Add" name="add">
+                <p class='publish'>Publish? <input type="checkbox" name="publish[]" value="yes"></p>
+            </div>
         </form>
 <?php 
     } 
 ?>
 </body>
+<footer class="footer">
+    <?php include("footer.php") ?>
+</footer>
 </html>
