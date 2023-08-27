@@ -1,6 +1,5 @@
 <?php
     include("auth_session.php");
-    include("user_panel.php");
     require('db_connection.php');
     
     $username = $_SESSION['username'];
@@ -17,26 +16,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Fews Blogs</title>
+    <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/dashboard.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
+    <!-- Icons kit. -->
+    <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
 </head>
+<header class="user_panel">
+    <?php include("user_panel.php") ?>
+</header>
 <body>
-    <h1 align="center">Hey, <?php echo $_SESSION['username']; ?>!</h1>
-    <h2 align="center">What will you share with us today?</h2>
-    <p align="right"><a href="user_profile.php?id=<?php print $user_item['id'] ?>">User profile</a></p>
-    <p><a href="my_comments.php">My Comments</a></p>
-    <p>Back to <a href="index.php">Homepage</a><p>
-    <p align="right"><a href="add_article.php">Add Article</a></p>
+    <h1>Hey, <?php echo $_SESSION['username']; ?>!</h1>
+    <h2>What will you share with us today?</h2>
+    <div class='above_the_table'>
+        <p class='your_articles'>Your Articles</p>
+        <p><a class='add_article'href="add_article.php">Add Article</a></p>
+    </div>
 <?php
     $count = mysqli_num_rows($article_query);
     // Show user's articles if their quantity is bigger than zero.
     if ($count > 0) {
 ?>
-    <table border="1px" width="100%">
+    <table>
         <thead>
-            <tr>
-                <th colspan="7">Your Articles</th>
-            </tr>
-        </thead>
-        <tbody>  
             <tr>
                 <th>#</th>
                 <th>Topic</th>
@@ -46,6 +49,8 @@
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
+        </thead>
+        <tbody>
 <?php
         $i = 1;
         while ($article_item = mysqli_fetch_array($article_query)) {
@@ -79,12 +84,12 @@
                 print '<td align="center">'.$article_item['public']."</td>";
                 print "
                     <td align='center'>
-                        <a href='edit_article.php?id=".$article_item['article_id']."'>Edit</a>
+                        <a class='table_button' href='edit_article.php?id=".$article_item['article_id']."'><i class='fa-solid fa-pen'></i></a>
                     </td>
                 ";
                 print "
                     <td align='center'>
-                        <a href='#' onclick='delete_article(".$article_item['article_id'].")'>Delete</a>
+                        <a class='table_button' href='#' onclick='delete_article(".$article_item['article_id'].")'><i class='fa-solid fa-trash'></i></a>
                     </td>";
             print "</tr>";
         }
@@ -104,4 +109,7 @@
             }
     </script>
 </body>
+<footer class="footer">
+    <?php include("footer.php") ?>
+</footer>
 </html>

@@ -1,0 +1,76 @@
+h1,h2 {
+    margin: 0px 20px 10px 20px;
+}
+
+h1 {
+    padding-top: 50px;
+    font-size: 40px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 30px;
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+.above_the_table {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 20px 0px 20px;
+    height: 65px;
+}
+
+.your_articles {
+    margin: 0px;
+    font-size: 35px;
+    display: block;
+    padding-top: 20px;
+}
+
+.add_article {
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.600);
+    color: white;
+    padding: 10px;
+}
+
+.add_article:hover {
+    background-color: rgba(0, 0, 0, 0.700);
+}
+
+table {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.050);
+    border-collapse: collapse;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.200);
+}
+
+th,td {
+    padding: 4px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.050);
+}
+
+tr:hover {
+    background-color: rgba(255, 227, 135, 0.100);
+}
+
+td a {
+    color: black;
+}
+
+td a:hover {
+    text-decoration: none;
+}
+
+.table_button:hover   {
+    color: rgb(255, 255, 255);
+    text-shadow: black 0px 0px 4px;
+}
