@@ -94,7 +94,7 @@
             print "</tr>";
         }
     } else {
-        print "<h3 align='center'>You didn't make any articles yet. :(</h3>";
+        print "<p class='do_not_have_articles'>You didn't make any articles yet. :(</p>";
     }
 ?>
         </tbody>

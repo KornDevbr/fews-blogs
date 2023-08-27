@@ -12,7 +12,7 @@
             header("location:article.php?id=".$article_id);
             die();
         } else {
-            header("location:dashboard.php");
+            header("location:my_comments.php");
             die();
         }
     }
