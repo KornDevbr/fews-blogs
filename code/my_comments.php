@@ -60,7 +60,7 @@
     </table>
     ";
     } else {
-        print "<h3 align='center'>You didn't leave any comments yet. :(</h3>";
+        print "<h3 class='do_not_have_articles'>You didn't leave any comments yet. :(</h3>";
     }
 ?>
 </body>
