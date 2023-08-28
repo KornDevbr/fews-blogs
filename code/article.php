@@ -93,7 +93,7 @@
                 $comment                = mysqli_real_escape_string($db_connection, $comment);
                 $create_datetime        = date("Y-m-d H:i:s");
                 $article_id             = $article_item['article_id'];
-                $article_topic          = $article_item['topic'];
+                $article_topic          = mysqli_real_escape_string($db_connection, $article_item['topic']);
                 $comment_username_id    = $comment_user_item['id'];
                 $comment_username_email = $comment_user_item['email'];
                 $comment_create_query = mysqli_query($db_connection, "INSERT 

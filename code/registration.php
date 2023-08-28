@@ -45,7 +45,7 @@
             echo "<script> window.location='registration.php' </script>";
             exit();
         }
-        $get_email  = mysqli_query($db_connection, "SELECT * FROM users 
+        $get_email = mysqli_query($db_connection, "SELECT * FROM users 
             WHERE email='$email';");
         // Checking does the given email already in use.
         if (mysqli_num_rows($get_email) > 0){
@@ -54,19 +54,19 @@
             exit();
         }
 
-        $user_create_query      = "INSERT into `users` (username, password, email, gender, bio, create_datetime)
-                        VALUES ('$username', '" . md5($password) . "', '$email', '$gender', ,'$bio', '$create_datetime')";
-        $result     = mysqli_query($db_connection, $user_create_query);    
+        $user_create_query = "INSERT into `users` (username, password, email, gender, bio, create_datetime)
+                        VALUES ('$username', '" . md5($password) . "', '$email', '$gender', '$bio', '$create_datetime')";
+        $result = mysqli_query($db_connection, $user_create_query);    
         
         if ($result) {
-            echo "<div class='form'>
-                    <h3>You are registered successfully.</h3><br/>
-                    <p class='link'>Click here to <a href='login.php'>Login</a></p>
+            echo "<div class='info_msg'>
+                        <p class='info_msg_text'>You are registered successfully.</p>
+                        <p class='info_msg_link'>Click here to <a href='login.php'>Login</a></p>
                     </div>";
         } else {
-            echo "<div class='form'>
-                    <h3>Required fields are missing.</h3><br/>
-                    <p class='link'>Click here to <a href='registration.php</a>registration</a> again.</p>
+            echo "<div class='info_msg'>
+                        <p class='info_msg_text'>Required fields are missing.</p>
+                        <p class='info_msg_link'>Click here to <a href='registration.php</a>registration</a> again.</p>
                     </div>";
         }
     // Show a registration form if there isn't a registration user query.    

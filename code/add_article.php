@@ -24,8 +24,10 @@
     require('db_connection.php');
     
     if(isset($_REQUEST['topic'])) {
-        $topic      = mysqli_real_escape_string($db_connection, $_REQUEST['topic']);
-        $content    = mysqli_real_escape_string($db_connection, $_REQUEST['content']);
+        $topic    = stripslashes($_REQUEST['topic']);
+        $topic      = mysqli_real_escape_string($db_connection, $topic);
+        $content    = stripslashes($_REQUEST['content']);
+        $content    = mysqli_real_escape_string($db_connection, $content);
         $username   = $_SESSION['username'];
         $create_datetime = date("Y-m-d H:i:s");
         $edit_datetime   = date("Y-m-d H:i:s");
