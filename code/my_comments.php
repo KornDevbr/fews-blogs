@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Comments | Fews Blogs</title>
     <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
-    <link href="styles/main.css" rel="stylesheet" />
-    <link href="styles/dashboard.css" rel="stylesheet" />
+    <link href="/styles/main.css" rel="stylesheet" />
+    <link href="/styles/dashboard.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
     <!-- Icons kit. -->
     <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
@@ -46,7 +46,7 @@
             print   "<tr>
                         <td align='center'>" . $n++ . "</td>
                         <td align='center'>
-                            <a href=article.php?id=". $comment_list['article_id'] . ">" . $comment_list['article_topic'] . "</a>
+                            <a href=/article/". $comment_list['article_id'] . ">" . $comment_list['article_topic'] . "</a>
                         </td>
                         <td align='center'>" . $comment_list['comment'] . "</td>
                         <td align='center'>" . $comment_list['create_datetime'] . "</td>
@@ -73,7 +73,7 @@
     function comment_delete(comment_id,article_id) {
         var r = confirm("Delete comment?");
         if (r == true) {
-            window.location.assign("comment_delete.php?id=" + comment_id + "&article_id=" + article_id);
+            window.location.assign("/comment/" + comment_id + "/delete");
         }
     }
 </script>

@@ -1,9 +1,9 @@
 <?php
+    $user_id = $url[1];
     session_start();
     require("db_connection.php");
     // Check does user id is not empty.
-    if(!empty($_GET['id'])) {
-        $user_id = $_GET['id'];
+    if(!empty($user_id)) {
         $user_query = mysqli_query($db_connection, "SELECT * FROM `users` 
             WHERE id='$user_id'");
         $user_item  = mysqli_fetch_array($user_query);
@@ -21,8 +21,8 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title><?php print $username ?> | Fews Blogs</title>
-                <link href="styles/main.css" rel="stylesheet" />
-                <link href="styles/user_profile.css" rel="stylesheet" />
+                <link href="/styles/main.css" rel="stylesheet" />
+                <link href="/styles/user_profile.css" rel="stylesheet" />
                 <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
                 <!-- Icons kit. -->
                 <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
