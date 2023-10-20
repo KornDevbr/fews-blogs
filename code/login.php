@@ -32,10 +32,10 @@
 
             if ($rows == 1) {
                 $_SESSION['username'] = $username;
-                header("Location: index.php");
+                header("Location: /");
             } else {
                 echo "<script> alert('Incorrect Username or Password') </script></br>";
-                echo "<script> window.location='login.php' </script>";
+                echo "<script> window.location='/login' </script>";
                 exit();
             }
         } else {
@@ -47,8 +47,8 @@
             </br>
             <input type="submit" value="Login" name="submit">
             </br>
-            <p>Don't have an account yet? <a href="registration.php">Register</a></p>
-        </from>            
+            <p>Don't have an account yet? <a href="/registration">Register</a></p>
+        </form>
 <?php   }   ?>
 </body>
 <footer class="footer">

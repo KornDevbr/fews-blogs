@@ -31,7 +31,7 @@
     <h2>What will you share with us today?</h2>
     <div class='above_the_table'>
         <p class='your_articles'>Your Articles</p>
-        <p><a class='add_article'href="add_article.php">Add Article</a></p>
+        <p><a class='add_article'href="/article/add">Add Article</a></p>
     </div>
 <?php
     $count = mysqli_num_rows($article_query);
@@ -62,13 +62,13 @@
                 if ($article_item['public'] == "no"){
                     print "
                         <td>
-                            <a href='article_preview.php?id=".$article_item['article_id']."'>".$article_item['topic']."</a>
+                            <a href='/article/".$article_item['article_id']."/preview'>".$article_item['topic']."</a>
                         </td>
                     "; 
                 } else {
                     print "
                         <td>
-                            <a href='article.php?id=".$article_item['article_id']."'>".$article_item['topic']."</a>
+                            <a href='/article/".$article_item['article_id']."'>".$article_item['topic']."</a>
                         </td>
                     "; 
                 }
@@ -84,7 +84,7 @@
                 print '<td align="center">'.$article_item['public']."</td>";
                 print "
                     <td align='center'>
-                        <a class='table_button' href='edit_article.php?id=".$article_item['article_id']."'><i class='fa-solid fa-pen'></i></a>
+                        <a class='table_button' href='/article/".$article_item['article_id']."/edit'><i class='fa-solid fa-pen'></i></a>
                     </td>
                 ";
                 print "

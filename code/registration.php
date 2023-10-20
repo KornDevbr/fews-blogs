@@ -22,7 +22,7 @@
         // Check do passwords are different.
         if ($_REQUEST['password'] != $_REQUEST['cpassword']) {
             echo "<script> alert('Password and Confirmation password are different. They must be the same.') </script></br>";
-            echo "<script> window.location='registration.php' </script>";
+            echo "<script> window.location='/registration' </script>";
             exit();
         }
         $username   = stripslashes($_REQUEST['username']); // Removes backslashes.
@@ -42,7 +42,7 @@
         // Checking does the given username already exist.
         if (mysqli_num_rows($get_user) > 0){
             echo "<script> alert('This username already exists.') </script></br>";
-            echo "<script> window.location='registration.php' </script>";
+            echo "<script> window.location='/registration' </script>";
             exit();
         }
         $get_email = mysqli_query($db_connection, "SELECT * FROM users 
@@ -50,7 +50,7 @@
         // Checking does the given email already in use.
         if (mysqli_num_rows($get_email) > 0){
             echo "<script> alert('This email already in use.') </script></br>";
-            echo "<script> window.location='registration.php' </script>";
+            echo "<script> window.location='/registration' </script>";
             exit();
         }
 
@@ -61,12 +61,12 @@
         if ($result) {
             echo "<div class='info_msg'>
                         <p class='info_msg_text'>You are registered successfully.</p>
-                        <p class='info_msg_link'>Click here to <a href='login.php'>Login</a></p>
+                        <p class='info_msg_link'>Click here to <a href='/login'>Login</a></p>
                     </div>";
         } else {
             echo "<div class='info_msg'>
                         <p class='info_msg_text'>Required fields are missing.</p>
-                        <p class='info_msg_link'>Click here to <a href='registration.php</a>registration</a> again.</p>
+                        <p class='info_msg_link'>Click here to <a href='/registration'</a> register again.</p>
                     </div>";
         }
     // Show a registration form if there isn't a registration user query.    
@@ -101,7 +101,7 @@
         <textarea name="bio" rows="10" cols="60"></textarea><br>
         <!-- Select your avatar <input type="file" name="avatar" accept="image/png, image/jpeg"> </br> -->
         <input type="submit" name="submit" value="Register"></p>
-        <p class="link">Already registered? <a href="login.php">Login</a> to our website</p>
+        <p class="link">Already registered? <a href="/login">Login</a> to our website</p>
     </form>
 <?php
     }
