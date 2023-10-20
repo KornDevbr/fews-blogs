@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Article | Fews Blogs</title>
     <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
-    <link href="styles/main.css" rel="stylesheet" />
-    <link href="styles/add_edit_article.css" rel="stylesheet" />
+    <link href="/styles/main.css" rel="stylesheet" />
+    <link href="/styles/add_edit_article.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
     <!-- Icons kit. -->
     <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>

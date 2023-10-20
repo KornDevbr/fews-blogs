@@ -1,9 +1,13 @@
 <?php
+    // Variables to passing arguments from URL.
+    $article =  $url[0];
+    $article_id = $url[1];
+
     session_start();
     require('db_connection.php');
     // Check does article ID is not empty.
-    if(!empty($_GET['id'])) {
-        $article_id = $_GET['id'];
+    if(!empty($article_id)) {
+        $article_id = $url[1];
         $article_query =  mysqli_query($db_connection, "SELECT * FROM `articles` 
             WHERE (article_id,public)=('$article_id','yes')");
         $article_item  =  mysqli_fetch_array($article_query);
@@ -23,8 +27,8 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title><?php print $article_item['topic'] ?> | Fews Blogs</title>
                 <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
-                <link href="styles/main.css" rel="stylesheet" />
-                <link href="styles/article.css" rel="stylesheet" />
+                <link href="/styles/main.css" rel="stylesheet" />
+                <link href="/styles/article.css" rel="stylesheet" />
                 <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
                 <!-- Icons kit. -->
                 <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
@@ -39,7 +43,7 @@
                 <ul class='article_info'>
                     <li class='right'>
                         <p class='text'>Created by
-                            <a href='user_profile.php?id=".$article_user_item['id']."'>".$article_item['username']."</a>
+                            <a href='/user/".$article_user_item['id']."'>".$article_item['username']."</a>
                         </p>
                     </li>";
             // Show "Edited" time if article was edit.
@@ -128,7 +132,7 @@
                             </li>
                             <li>
                                 <p>            
-                                    <a class='comment_user'href='user_profile.php?id=".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a>
+                                    <a class='comment_user'href='/user/".$comment_list_item['username_id']."'>".$comment_list_item['username']."</a>
                                 </p>
                             </li>";
                     // Show edit date and time if the comment edited.
@@ -148,7 +152,7 @@
                                         <div class='comment_dropdown'>
                                             <button class='comment_dropdown_button'><i class='fa-solid fa-bars'></i></button>
                                                 <div class='comment_dropdown_content'>
-                                                    <a href='comment_edit.php?id=".$comment_list_item['comment_id']."&article_id=".$comment_list_item['article_id']."'>Edit</a>
+                                                    <a href='/comment/".$comment_list_item['comment_id']."/edit'>Edit</a>
                                                     <a href='#' onclick='comment_delete(".$comment_list_item['comment_id'].",".$comment_list_item['article_id'].")'>Delete</a>
                                                 </div>
                                         </div>
@@ -172,7 +176,7 @@
                 function comment_delete(comment_id,article_id) {
                     var r = confirm("Delete comment?");
                     if (r == true) {
-                        window.location.assign("comment_delete.php?id=" + comment_id + "&article_id=" + article_id);
+                        window.location.assign("/comment/" + comment_id + "/delete");
                     }
                 }
             </script>
