@@ -1,5 +1,5 @@
 <head>
-    <link href="styles/footer.css" rel="stylesheet"></link>
+    <link href="/styles/footer.css" rel="stylesheet"></link>
 </head>
 <div class="column">
     <ul>
