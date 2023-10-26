@@ -25,8 +25,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>User Profile Edit | Fews News</title>
-        <link href="styles/main.css" rel="stylesheet"/>
-        <link href="styles/user_profile_edit.css" rel="stylesheet"/>
+        <link href="/styles/main.css" rel="stylesheet"/>
+        <link href="/styles/user_profile_edit.css" rel="stylesheet"/>
         <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
         <!-- Icons kit. -->
         <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>

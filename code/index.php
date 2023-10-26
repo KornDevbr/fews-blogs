@@ -1,81 +1,60 @@
 <?php
-    session_start();
-    require("db_connection.php");
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Fews Blogs</title>
-    <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
-    <link href="styles/main.css" rel="stylesheet" />
-    <link href="styles/homepage.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
-    <!-- Icons kit. -->
-    <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
-</head>
-<header class="user_panel">
-    <?php include("user_panel.php") ?>
-</header>
-<body>
-    <h1 class="sitename">Fews Blogs</h1>
-    <h2 class="slogan">Share us any of your thoughts</h2>
-<?php
-    $article_query      = mysqli_query($db_connection, "SELECT * FROM `articles`
-        WHERE public='yes' ORDER BY create_datetime DESC") or die(mysqli_error());
-    print "<div class='article'>";
-    while ($article_item = mysqli_fetch_array($article_query)) {
-        $username   = $article_item['username'];
-        $user_query = mysqli_query($db_connection, "SELECT * FROM `users`
-            WHERE username='$username'");
-        $user_item  = mysqli_fetch_array($user_query);
-?>
-        <h3 class="topic">
-            <a href="article.php?id=<?php print $article_item['article_id'] ?>"><?php print $article_item['topic'] ?></a>
-        </h3>
-        <ul class="article_info">
-            <li class="right">
-                <p class="text">Created by
-                    <a class="user" href="user_profile.php?id=<?php print $user_item['id']?>"><?php print $article_item['username'] ?></a>
-                </p>
-            </li>
-<?php   
-        // Show "Edited" time if article was edit.
-        if ($article_item['edit_datetime'] != null){
-            print "
-                <li class='left'>
-                        <p class='text'>
-                            Last Edit: 
-                        </p>
-                        <p class='datetime'>
-                            " . $article_item['edit_datetime'] . "
-                        </p>
-                    </li>";
-        } else {
-            print "
-                <li class='left'>
-                    <p class='text'>
-                        Create: 
-                    </p>
-                    <p class='datetime'>
-                        ".$article_item['create_datetime']."
-                    </p>
-                </li>";
+
+// Statement for page routing.
+if (empty($_GET["q"])) {
+    include ("homepage.php");
+} else {
+    $url = explode("/", $_GET["q"]);
+
+    // Articles managing section.
+    if ($url[0] == "article") {
+        if ($url[1] == "add") {
+            include("add_article.php");
+        } else {                                        // Too many "ifs". Is it stupid? Yes. But we won't optimize it.
+            if (empty($url[2])) {
+                include("article.php");
+            } elseif ($url[2] == "edit") {
+                include("edit_article.php");
+            } elseif ($url[2] == "preview") {
+                include("article_preview.php");
+            }
         }
-        print "</ul>
-                <br>";
-        print "<p class='article_content'>".$article_item['content']."</p>";
-        $comment_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
-            WHERE article_id='$article_item[article_id]'");
-        $comment_count = mysqli_num_rows($comment_query);
-        print "<a class='comment' href='article.php?id=".$article_item['article_id']."'>Comments(".$comment_count.")</a>";
     }
-?>
-        </div>
-</body>
-<footer class="footer">
-    <?php include("footer.php") ?>
-</footer>
-</html>
+
+    // User managing section.
+    if ($url[0] == "user") {
+        if (empty($url[2])) {
+            include("user_profile.php");
+        } else {
+            include("user_profile_edit.php");
+        }
+    }
+
+    // Comments managing section.
+    if ($url[0] == "comment") {
+        if (empty($url[1]) || $url[1] == "list" ) {
+            include("my_comments.php");
+        } elseif ($url[2] == "edit") {
+            include("comment_edit.php");
+        } elseif ($url[2] == "delete") {
+            include("comment_delete.php");
+        }
+    }
+
+    // Other website pages.
+    if ($url[0] == "dashboard") {
+        include("dashboard.php");
+    }
+    if ($url[0] == "about_us") {
+        include("about_us.php");
+    }
+    if ($url[0] == "login") {
+        include("login.php");
+    }
+    if ($url[0] == "logout") {
+        include("logout.php");
+    }
+    if ($url[0] == "registration") {
+        include("registration.php");
+    }
+}

@@ -1,10 +1,13 @@
 <?php
+    // Variable to pass article ID from URI.
+    $article_id = $url[1];
+
     include("auth_session.php");
     require("db_connection.php");
 
     // Check does article id is not empty.
-    if (!empty($_GET['id'])) {
-        $article_id = $_GET['id'];
+    if (!empty($article_id)) {
+
         $username = $_SESSION['username'];
 
         $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` 
@@ -23,8 +26,8 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Edit Article | Fews Blogs</title>
                 <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
-                <link href="styles/main.css" rel="stylesheet" />
-                <link href="styles/add_edit_article.css" rel="stylesheet" />
+                <link href="/styles/main.css" rel="stylesheet" />
+                <link href="/styles/add_edit_article.css" rel="stylesheet" />
                 <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
                 <!-- Icons kit. -->
                 <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>

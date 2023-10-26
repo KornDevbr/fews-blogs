@@ -2,9 +2,13 @@
     include('auth_session.php');
     require('db_connection.php');
 
+    // Variables to passing arguments from URL.
+    $comment =  $url[0];
+    $comment_id = $url[1];
+
     // Check does comment id is not empty.
-    if (!empty($_GET['id'])) {
-        $comment_id = $_GET['id'];
+    if (!empty($comment_id)) {
+        $comment_id = $url[1];
         $username = $_SESSION['username'];
         $comment_query = mysqli_query($db_connection, "SELECT * FROM `comments` 
             WHERE (comment_id,username)=('$comment_id','$username')");
@@ -24,8 +28,8 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Edit Comment | Fews Blogs</title>
                 <!-- <link href="styles/reset.css" rel="stylesheet" /> -->
-                <link href="styles/main.css" rel="stylesheet" />
-                <link href="styles/comment_edit.css" rel="stylesheet" />
+                <link href="/styles/main.css" rel="stylesheet" />
+                <link href="/styles/comment_edit.css" rel="stylesheet" />
                 <link href='https://fonts.googleapis.com/css?family=Space+Mono|Muli|Sofia' rel='stylesheet'>
                 <!-- Icons kit. -->
                 <script src="https://kit.fontawesome.com/743929e53b.js" crossorigin="anonymous"></script>
