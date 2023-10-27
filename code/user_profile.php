@@ -36,7 +36,7 @@
                 if(isset($_SESSION['username'])){
                     // Check does logged and watching the page usernames are the same.
                     if($_SESSION['username'] == $username){
-                        print "<p class='edit'><a href='user_profile_edit.php'>Edit profile page</a></p>";
+                        print "<p class='edit'><a href='/user/edit'>Edit profile page</a></p>";
                     }
                 }
 ?>              <div class="user_info">
@@ -64,7 +64,7 @@
                     if ($count > 0) {
                         while ($article_item = mysqli_fetch_array($article_query)) {
                             print "<div class='article_list'>";
-                                print "<p><a href='article.php?id=" . $article_item['article_id'] . "'>" . $article_item['topic'] . "</a></p>";
+                                print "<p><a href='/article/" . $article_item['article_id'] . "'>" . $article_item['topic'] . "</a></p>";
                                 if ($article_item['edit_datetime'] != null) {
                                     print "<p class='article_date'><b>Updated:</b> " . $article_item['edit_datetime'] . "</p>";
                                 } else {

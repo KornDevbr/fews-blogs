@@ -23,10 +23,10 @@ if (empty($_GET["q"])) {
 
     // User managing section.
     if ($url[0] == "user") {
-        if (empty($url[2])) {
-            include("user_profile.php");
-        } else {
+        if ($url[1] == "edit") {
             include("user_profile_edit.php");
+        } else {
+            include("user_profile.php");
         }
     }
 
