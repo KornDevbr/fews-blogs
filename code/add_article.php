@@ -48,7 +48,7 @@
                 <div class='congrats'>
                     <p class='congrats_title'>Congratulations!</p> 
                     <p class='congrats_text'>You added the article!</p>
-                    <p><a href='add_article.php'>Add another article</a></p>
+                    <p><a href='/article/add'>Add another article</a></p>
                 </div>";
         } else {
             echo "<p>ERROR: Something went wrong. Article wasn't add. :(</p>";

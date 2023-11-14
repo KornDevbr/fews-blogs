@@ -1,10 +1,6 @@
 <?php
     include("auth_session.php");
 
-    // Variables to passing arguments from URL.
-    $article =  $url[0];
-    $article_id = $url[1];
-
     if($_SERVER['REQUEST_METHOD'] == "GET") {
         require("db_connection.php");
         $article_id = $url[1];

@@ -17,6 +17,8 @@ if (empty($_GET["q"])) {
                 include("edit_article.php");
             } elseif ($url[2] == "preview") {
                 include("article_preview.php");
+            } elseif ($url[2] == "delete") {
+                include("article_delete.php");
             }
         }
     }

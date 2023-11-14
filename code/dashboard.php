@@ -104,7 +104,7 @@
             function delete_article(article_id) {
                 var r = confirm("Are you sure you want to delete this article?");
                 if (r == true) {
-                    window.location.assign("article_delete.php?id=" + article_id);
+                    window.location.assign("/article/" + article_id + "/delete");
                 }
             }
     </script>
