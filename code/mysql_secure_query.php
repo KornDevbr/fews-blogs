@@ -27,13 +27,13 @@ function secureMysqliQuerySelect(mysqli_stmt $stmt,array $params):array{
     return mysqli_fetch_assoc($result);
 }
 
-/** The function makes the prepared MySQLi query secure.
+/** The function makes the statement secure and executes it.
  * @param mysqli_stmt $stmt Prepared MySQL query.
  * @param array $params An array with referenced variables for SQL query.
  *  For example: array(&$variable1, &$variable2, ... , &$variableN).
  * @return bool
  */
-function secureMysqliQueryInsert(mysqli_stmt $stmt, array $params):bool{
+function secureMysqliQueryExecute(mysqli_stmt $stmt, array $params):bool{
 
     // Count input params and make a string with the type of input.
     $type = '';

@@ -128,7 +128,7 @@
                         (? , ? , ? , ? , ? , ? , ?)")
                     or die(mysqli_error($db_connection));
 
-                // The array for the secureMysqliQueryInsert function.
+                // The array for the secureMysqliQueryExecute function.
                 $secure_stmt_variables = array(&$comment,
                                             &$create_datetime,
                                             &$article_id,
@@ -138,8 +138,8 @@
                                             &$comment_username_email
                                         );
 
-                // Insert the prepared statement to the database.
-                secureMysqliQueryInsert($comment_create_query, $secure_stmt_variables);
+                // Execute the prepared statement.
+                secureMysqliQueryExecute($comment_create_query, $secure_stmt_variables);
 
                 if ($comment_create_query){
                     print "<p class='comment_info'>The comment added!</p>";
