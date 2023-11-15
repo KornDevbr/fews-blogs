@@ -150,14 +150,13 @@
             print "</div>";
 
             // Comment list.
-
             $comment_list_query = mysqli_prepare($db_connection, "SELECT * FROM `comments` 
                 WHERE article_id= ? ORDER BY create_datetime");
 
             $params = array($article_id);
             $comments = secureMysqliQuerySelectForLoop($comment_list_query, $params);
 
-            if ($comments != null) {
+            if ($comments) {
                 $n = 1;
                   foreach ($comments as $commentResult) {
                     print "

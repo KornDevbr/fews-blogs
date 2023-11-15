@@ -5,9 +5,9 @@
  * @param mysqli_stmt $stmt Prepared MySQL query.
  * @param array $params An array with referenced variables for SQL query.
  * For example: array(&$variable1, &$variable2, ... , &$variableN).
- * @return array
+ * @return array|null
  */
-function secureMysqliQuerySelect(mysqli_stmt $stmt,array $params):array{
+function secureMysqliQuerySelect(mysqli_stmt $stmt,array $params):array|null{
 
     // Count input params and make a string with the type of input.
     $type = '';
@@ -20,11 +20,14 @@ function secureMysqliQuerySelect(mysqli_stmt $stmt,array $params):array{
 
     // Call the mysqli_stmt_bind_param function with the parameters stored in the $bindParams array.
     call_user_func_array('mysqli_stmt_bind_param', $bindParams);
-    mysqli_stmt_execute($stmt);
 
-    $result = mysqli_stmt_get_result($stmt);
+    if (mysqli_stmt_execute($stmt)) {
+        $result = mysqli_stmt_get_result($stmt);
+        return mysqli_fetch_assoc($result);
+    } else {
+        die("Error executing statement: " . mysqli_stmt_error($stmt));
+    }
 
-    return mysqli_fetch_assoc($result);
 }
 
 /** The function makes the statement secure and executes it.
@@ -52,10 +55,10 @@ function secureMysqliQueryExecute(mysqli_stmt $stmt, array $params):bool{
 
 /** The function makes prepared array with MySQL results for using with loops.
  * @param mysqli_stmt $stmt Prepared MySQL query.
- * @param array|null $params An array with data to pass to the MySQL query.
- * @return array
+ * @param array|null $params An array with variables to pass to the MySQL query.
+ * @return array|null
  */
-function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null):array {
+function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null):array|null {
 
     // Count input params and make a string with the type of input.
     $paramTypes = '';

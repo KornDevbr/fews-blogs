@@ -10,9 +10,9 @@
         $username = $_SESSION['username'];
 
         $article_delete_query = mysqli_prepare($db_connection,
-            "DELETE 
-                   FROM `articles` 
-                   WHERE ( `article_id` , `username` ) = ( ? , ? )");
+    "DELETE 
+           FROM `articles` 
+           WHERE ( `article_id` , `username` ) = ( ? , ? )");
 
         // The array for the secureMysqliQueryExecute function.
         $secure_stmt_variables = array(&$article_id, &$username);
