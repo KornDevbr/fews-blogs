@@ -21,5 +21,5 @@
         secureMysqliQueryExecute($article_delete_query, $secure_stmt_variables);
 
         header("location:/dashboard");
-        die();
+        die(mysqli_error($db_connection));
     }

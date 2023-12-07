@@ -49,7 +49,7 @@
                     create_datetime, 
                     public) 
                VALUES ( ?, ? , ? , ? , ? )")
-            or die(mysqli_error());
+            or die(mysqli_error($db_connection));
 
         // The array for the secureMysqliQueryExecute function.
         $secure_stmt_variables = array(
