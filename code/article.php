@@ -6,11 +6,14 @@
     session_start();
     require('db_connection.php');
     include('mysql_secure_query.php');
+
     // Check does article ID is not empty.
     if(!empty($article_id)) {
 
         // Prepared MySQL statement to prevent SQL injection.
-        $article_query =  mysqli_prepare($db_connection, "SELECT * FROM `articles` 
+        $article_query =  mysqli_prepare($db_connection,
+            "SELECT *
+            FROM `articles` 
             WHERE ( `article_id` , `public` ) = ( ? , ? )");
 
         $article_id = "$url[1]";
@@ -26,9 +29,14 @@
 
         // Check does article exists.
         if($article_item) {
+
             $username = $article_item['username'];
-            $article_user_query = mysqli_prepare($db_connection, "SELECT * FROM `users` 
+
+            $article_user_query = mysqli_prepare($db_connection,
+                "SELECT *
+                FROM `users` 
                 WHERE username= ?");
+
             $secure_stmt_variables = array(&$username);
             $article_user_item = secureMysqliQuerySelect($article_user_query, $secure_stmt_variables);
 ?>
@@ -101,11 +109,15 @@
 <?php           }
             // Add comment block.
             if(isset($_REQUEST['comment'])) {
+
                 $comment_username       = $_SESSION['username'];
 
                 // SQL query to find out the username information.
-                $comment_user_query     = mysqli_prepare($db_connection, "SELECT * FROM `users` 
+                $comment_user_query     = mysqli_prepare($db_connection,
+                    "SELECT * 
+                    FROM `users` 
                     WHERE username= ?");
+
                 $secure_stmt_variables = array(&$comment_username);
                 $comment_user_item = secureMysqliQuerySelect($comment_user_query, $secure_stmt_variables);
 
@@ -119,7 +131,8 @@
                 $comment_username_email = $comment_user_item['email'];
 
                 // The INSERT query for comments adding.
-                $comment_create_query = mysqli_prepare($db_connection, "INSERT 
+                $comment_create_query = mysqli_prepare($db_connection,
+                    "INSERT 
                     INTO `comments` 
                         (comment, create_datetime,
                          article_id, article_topic,
@@ -150,8 +163,11 @@
             print "</div>";
 
             // Comment list.
-            $comment_list_query = mysqli_prepare($db_connection, "SELECT * FROM `comments` 
-                WHERE article_id= ? ORDER BY create_datetime");
+            $comment_list_query = mysqli_prepare($db_connection,
+                "SELECT * 
+                FROM `comments` 
+                WHERE article_id= ? 
+                ORDER BY create_datetime");
 
             $params = array($article_id);
             $comments = secureMysqliQuerySelectForLoop($comment_list_query, $params);
