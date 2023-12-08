@@ -1,13 +1,20 @@
 <?php
     include("auth_session.php");
     require('db_connection.php');
-    
+    include('mysql_secure_query.php');
+
     $username = $_SESSION['username'];
-    $article_query = mysqli_query($db_connection, "SELECT * FROM `articles` 
-        WHERE username='$username' ORDER BY create_datetime DESC");
-    $user_query = mysqli_query($db_connection, "SELECT * FROM `users` 
-        WHERE username='$username'");
-    $user_item = mysqli_fetch_array($user_query);
+
+    $article_query = mysqli_prepare($db_connection,
+        "SELECT *
+        FROM `articles`
+        WHERE username= ?
+        ORDER BY create_datetime 
+        DESC");
+
+    $params = array($username);
+    $articles = secureMysqliQuerySelectForLoop($article_query, $params);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +41,9 @@
         <p><a class='add_article'href="/article/add">Add Article</a></p>
     </div>
 <?php
-    $count = mysqli_num_rows($article_query);
+
     // Show user's articles if their quantity is bigger than zero.
-    if ($count > 0) {
+    if ($articles) {
 ?>
     <table>
         <thead>
@@ -53,7 +60,7 @@
         <tbody>
 <?php
         $i = 1;
-        while ($article_item = mysqli_fetch_array($article_query)) {
+        foreach ($articles as $article_item) {
             print "
                 <tr>
                     <td align='center'>".$i++."</td>
