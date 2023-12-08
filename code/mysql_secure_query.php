@@ -90,26 +90,37 @@ function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null)
         }
 
         // Create an array to hold result column references.
-        $resultColumns = array_fill_keys($fieldNames, null); // Initialize with null.
+        $resultColumns = array();
+        foreach ($fieldNames as $fieldName) {
+            $resultColumns[$fieldName] = null; // Initialize with null
+        }
 
         // Bind the result columns to references.
         $bindResultParams = array($stmt);
-        foreach ($resultColumns as &$value) {
-            $bindResultParams[] = &$value;
+        foreach ($fieldNames as $fieldName) {
+            $bindResultParams[] = &$resultColumns[$fieldName];
         }
+
         call_user_func_array('mysqli_stmt_bind_result', $bindResultParams);
 
         // Fetch and return the results.
         $results = array();
+
         while (mysqli_stmt_fetch($stmt)) {
+
+            // Create a new array for each row
             $row = array();
+
+            // Copy the values from $resultColumns to $row
             foreach ($resultColumns as $key => $value) {
                 $row[$key] = $value;
+                $resultColumns[$key] = null; // Reset the reference for the next iteration
             }
             $results[] = $row;
         }
 
         return $results;
+
     } else {
         die("Error executing statement: " . mysqli_stmt_error($stmt));
     }
