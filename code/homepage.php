@@ -48,7 +48,7 @@ foreach ($articles as $article_item) {
         FROM `users`
         WHERE username= ? ");
 
-    $secure_stmt_variables = array(&$public);
+    $secure_stmt_variables = array($public);
 
     $user_item = secureMysqliQuerySelect($user_query, $secure_stmt_variables);
 ?>
@@ -97,11 +97,8 @@ foreach ($articles as $article_item) {
         FROM `comments` 
         WHERE article_id= ? ");
 
-    mysqli_stmt_bind_param($comment_query, "s", $article_id);
-    $article_id = $article_item['article_id'];
-    mysqli_stmt_execute($comment_query);
-    mysqli_stmt_store_result($comment_query);
-    $comment_count = mysqli_stmt_num_rows($comment_query);
+    $secure_stmt_variables = array ($article_item['article_id']);
+    $comment_count = secureMysqlQuerySelectNumRows($comment_query, $secure_stmt_variables);
 
     print "<a class='comment' href='/article/".$article_item['article_id']."'>
                 Comments(".$comment_count.")
