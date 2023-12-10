@@ -3,25 +3,12 @@
 /**
  * Returns an array with prepared secure SELECT SQL query.
  * @param mysqli_stmt $stmt Prepared MySQL query.
- * @param array $params An array with referenced variables for SQL query.
- * For example: array(&$variable1, &$variable2, ... , &$variableN).
+ * @param array $params An array with variables for SQL query.
  * @return array|null
  */
 function secureMysqliQuerySelect(mysqli_stmt $stmt,array $params):array|null{
 
-    // Count input params and make a string with the type of input.
-    $type = '';
-    for ($i = 1; $i <= count($params); $i++) {
-        $type .= "s";
-    }
-
-    // Create an array from two other arrays to pass it in function.
-    $bindParams = array_merge(array($stmt, $type), $params);
-
-    // Call the mysqli_stmt_bind_param function with the parameters stored in the $bindParams array.
-    call_user_func_array('mysqli_stmt_bind_param', $bindParams);
-
-    if (mysqli_stmt_execute($stmt)) {
+    if (secureMysqliQueryExecute($stmt, $params)) {
         $result = mysqli_stmt_get_result($stmt);
         return mysqli_fetch_assoc($result);
     } else {
@@ -32,33 +19,10 @@ function secureMysqliQuerySelect(mysqli_stmt $stmt,array $params):array|null{
 
 /** The function makes the statement secure and executes it.
  * @param mysqli_stmt $stmt Prepared MySQL query.
- * @param array $params An array with referenced variables for SQL query.
- *  For example: array(&$variable1, &$variable2, ... , &$variableN).
+ * @param array $params An array with variables for SQL query.
  * @return bool
  */
 function secureMysqliQueryExecute(mysqli_stmt $stmt, array $params):bool{
-
-    // Count input params and make a string with the type of input.
-    $type = '';
-    for ($i = 1; $i <= count($params); $i++) {
-        $type .= "s";
-    }
-
-    // Create an array from two other arrays to pass it in function.
-    $bindParams = array_merge(array($stmt, $type), $params);
-
-    // Call the mysqli_stmt_bind_param function with the parameters stored in the $bindParams array.
-    call_user_func_array('mysqli_stmt_bind_param', $bindParams);
-
-    return mysqli_stmt_execute($stmt);
-}
-
-/** The function makes prepared array with MySQL results for using with loops.
- * @param mysqli_stmt $stmt Prepared MySQL query.
- * @param array|null $params An array with variables to pass to the MySQL query.
- * @return array|null
- */
-function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null):array|null {
 
     // Count input params and make a string with the type of input.
     $paramTypes = '';
@@ -78,8 +42,18 @@ function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null)
         call_user_func_array('mysqli_stmt_bind_param', $bindParams);
     }
 
+    return mysqli_stmt_execute($stmt);
+}
+
+/** The function makes prepared array with MySQL results for using with loops.
+ * @param mysqli_stmt $stmt Prepared MySQL query.
+ * @param array|null $params An array with variables to pass to the MySQL query.
+ * @return array|null
+ */
+function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null):array|null {
+
     // Execute the statement.
-    if (mysqli_stmt_execute($stmt)) {
+    if (secureMysqliQueryExecute($stmt, $params)) {
         // Get result set metadata
         $resultMetadata = mysqli_stmt_result_metadata($stmt);
 
@@ -121,6 +95,21 @@ function secureMysqliQuerySelectForLoop(mysqli_stmt $stmt, array $params = null)
 
         return $results;
 
+    } else {
+        die("Error executing statement: " . mysqli_stmt_error($stmt));
+    }
+}
+
+/** This function selects rows from a database table and counts the outputted strings.
+ * @param mysqli_stmt $stmt Prepared MySQL query.
+ * @param array $params An array with variables for SQL query.
+ * @return string|null
+ */
+function secureMysqlQuerySelectNumRows(mysqli_stmt $stmt, array $params):string|null {
+
+    if (secureMysqliQueryExecute($stmt, $params)) {
+        mysqli_stmt_store_result($stmt);
+        return mysqli_stmt_num_rows($stmt);
     } else {
         die("Error executing statement: " . mysqli_stmt_error($stmt));
     }
