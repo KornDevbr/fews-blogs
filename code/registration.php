@@ -17,7 +17,7 @@
 <body>
 <?php
     require('db_connection.php');
-    include('mysql_secure_query.php');
+    include('mysql_secure_query_functions.php');
 
     // When form submitted insert values into the database.
     if (isset($_REQUEST['username'])) {

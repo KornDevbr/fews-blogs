@@ -1,7 +1,8 @@
 <?php
     include('auth_session.php');
     require('db_connection.php');
-    include('mysql_secure_query.php');
+    include('mysql_secure_query_functions.php');
+    include('website_functions.php');
     // Variable to pass article ID from URI.
     $article_id = $url[1];
 
@@ -72,7 +73,7 @@
             ";
             print "</div>";
             print "
-                <p class='article_content'>".$article_item['content']."</p>
+                <p class='article_content'>".newlines2br($article_item['content'])."</p>
             ";
 
             print "<p class='comment'>Comments</p>";
@@ -118,7 +119,7 @@
                                 </li>";
                     } 
                     print "</ul>";
-                    print  "<p class='comment_content'>".$comment_list_item['comment']."</p>";
+                    print  "<p class='comment_content'>".newlines2br($comment_list_item['comment'])."</p>";
                 }
             }
 ?>

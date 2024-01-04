@@ -18,7 +18,7 @@
     <h1>Login</h1>
 <?php
         require('db_connection.php');
-        include('mysql_secure_query.php');
+        include('mysql_secure_query_functions.php');
         session_start();
         // When form submitted create user session.
         if (isset($_POST['username'])) {

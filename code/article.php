@@ -5,7 +5,8 @@
 
     session_start();
     require('db_connection.php');
-    include('mysql_secure_query.php');
+    include('mysql_secure_query_functions.php');
+    include ('website_functions.php');
 
     // Check does article ID is not empty.
     if(!empty($article_id)) {
@@ -58,7 +59,7 @@
             <body>
 <?php
                 print "
-                <h2 class='topic'>".$article_item['topic']."</h2>
+                <h2 class='topic'>".newlines2br($article_item['topic'])."</h2>
                 <ul class='article_info'>
                     <li class='right'>
                         <p class='text'>Created by
@@ -90,7 +91,7 @@
             }
             print "</ul>";
 ?>
-                <p class="article_content"><?php print $article_item['content']?></p>
+                <p class="article_content"><?php print newlines2br($article_item['content']) ?></p>
                 <p class="comment">Comments</p>
 <?php
                 // Show the "Add Comment" form for logged-in users.
@@ -122,11 +123,10 @@
                 $comment_user_item = secureMysqliQuerySelect($comment_user_query, $secure_stmt_variables);
 
                 // Variables for the future INSERT query.
-                $comment                = stripslashes($_REQUEST['comment']);
-                $comment                = mysqli_real_escape_string($db_connection, $comment);
+                $comment                = $_REQUEST['comment'];
                 $create_datetime        = date("Y-m-d H:i:s");
                 $article_id             = $article_item['article_id'];
-                $article_topic          = mysqli_real_escape_string($db_connection, $article_item['topic']);
+                $article_topic          = $article_item['topic'];
                 $comment_username_id    = $comment_user_item['id'];
                 $comment_username_email = $comment_user_item['email'];
 
@@ -231,7 +231,7 @@
                     }
 
                     print "</ul>";
-                    print  "<p class='comment_content'>".$commentResult['comment']."</p>";
+                    print  "<p class='comment_content'>".newlines2br($commentResult["comment"])."</p>";
                 }
             // Show the message if the comment list is empty.
             } else {

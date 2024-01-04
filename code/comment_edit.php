@@ -1,7 +1,7 @@
 <?php
     include('auth_session.php');
     require('db_connection.php');
-    include("mysql_secure_query.php");
+    include("mysql_secure_query_functions.php");
 
     // Variables to passing arguments from URL.
     $comment_id = $url[1];

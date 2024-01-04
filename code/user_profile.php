@@ -1,7 +1,7 @@
 <?php
 $user_id = $url[1];
 require("db_connection.php");
-include('mysql_secure_query.php');
+include('mysql_secure_query_functions.php');
 session_start();
 
 // Check does user id is not empty.

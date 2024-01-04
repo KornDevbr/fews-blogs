@@ -4,7 +4,7 @@
 
     include("auth_session.php");
     require("db_connection.php");
-    include("mysql_secure_query.php");
+    include("mysql_secure_query_functions.php");
 
     // Check does article id is not empty.
     if (!empty($article_id)) {

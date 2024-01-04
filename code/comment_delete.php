@@ -4,7 +4,7 @@
     if($_SERVER['REQUEST_METHOD'] == "GET") {
 
         require("db_connection.php");
-        include('mysql_secure_query.php');
+        include('mysql_secure_query_functions.php');
 
         $comment_id = $url[1];
         $username = $_SESSION['username'];
