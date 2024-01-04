@@ -2,6 +2,7 @@
     include("auth_session.php");
     require('db_connection.php');
     include('mysql_secure_query_functions.php');
+    include('website_functions.php');
 
     $username = $_SESSION['username'];
 
@@ -38,7 +39,7 @@
     <h2>What will you share with us today?</h2>
     <div class='above_the_table'>
         <p class='your_articles'>Your Articles</p>
-        <p><a class='add_article'href="/article/add">Add Article</a></p>
+        <p><a class='add_article' href="/article/add">Add Article</a></p>
     </div>
 <?php
 
@@ -69,13 +70,13 @@
                 if ($article_item['public'] == "no"){
                     print "
                         <td>
-                            <a href='/article/".$article_item['article_id']."/preview'>".$article_item['topic']."</a>
+                            <a href='/article/".$article_item['article_id']."/preview'>".newlines2br($article_item['topic'])."</a>
                         </td>
                     "; 
                 } else {
                     print "
                         <td>
-                            <a href='/article/".$article_item['article_id']."'>".$article_item['topic']."</a>
+                            <a href='/article/".$article_item['article_id']."'>".newlines2br($article_item['topic'])."</a>
                         </td>
                     "; 
                 }
@@ -110,7 +111,7 @@
             // Function for articles deleting.
             function delete_article(article_id) {
                 var r = confirm("Are you sure you want to delete this article?");
-                if (r == true) {
+                if (r === true) {
                     window.location.assign("/article/" + article_id + "/delete");
                 }
             }

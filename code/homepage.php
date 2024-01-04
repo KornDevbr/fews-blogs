@@ -1,7 +1,8 @@
 <?php
 session_start();
 require("db_connection.php");
-include('mysql_secure_query_functions.php');
+include("mysql_secure_query_functions.php");
+include("website_functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@ foreach ($articles as $article_item) {
 ?>
 <h3 class="topic">
     <a href="/article/<?php print $article_item['article_id'] ?>">
-        <?php print $article_item['topic'] ?>
+        <?php print newlines2br($article_item['topic']) ?>
     </a>
 </h3>
 <ul class="article_info">
@@ -90,7 +91,7 @@ foreach ($articles as $article_item) {
     }
     print "</ul>
                 <br>";
-    print "<p class='article_content'>".$article_item['content']."</p>";
+    print "<p class='article_content'>".newlines2br($article_item['content'])."</p>";
 
     $comment_query = mysqli_prepare($db_connection,
         "SELECT *

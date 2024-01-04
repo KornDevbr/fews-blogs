@@ -1,7 +1,8 @@
 <?php
     include("auth_session.php");
     require("db_connection.php");
-    include('mysql_secure_query_functions.php');
+    include("mysql_secure_query_functions.php");
+    include("website_functions.php");
 
     $comment_query = mysqli_prepare($db_connection,
         "SELECT *
@@ -53,7 +54,7 @@
                         <td align='center'>
                             <a href=/article/". $comment_list['article_id'] . ">" . $comment_list['article_topic'] . "</a>
                         </td>
-                        <td align='center'>" . $comment_list['comment'] . "</td>
+                        <td align='center'>" . newlines2br($comment_list['comment']) . "</td>
                         <td align='center'>" . $comment_list['create_datetime'] . "</td>
                         <td align='center'>
                             <a class='table_button' href='#' onclick='comment_delete(".$comment_list['comment_id'].",".$comment_list['article_id'].")'><i class='fa-solid fa-trash'></i></a>

@@ -23,10 +23,8 @@
         // When form submitted create user session.
         if (isset($_POST['username'])) {
 
-            $username   = stripslashes($_REQUEST['username']); // Remove backslashes.
-            $username   = mysqli_real_escape_string($db_connection, $username);
-            $password   = stripslashes($_REQUEST['password']);
-            $password   = mysqli_real_escape_string($db_connection, $password);
+            $username   = $_REQUEST['username'];
+            $password   = $_REQUEST['password'];
             $md5Password = md5($password);
 
             // Check does the user exist in a database.

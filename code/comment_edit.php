@@ -56,8 +56,7 @@
                 // Edit comment block.
                 if (isset($_REQUEST['edit_comment'])) {
 
-                    $comment        = stripslashes($_REQUEST['edit_comment']);
-                    $comment        = mysqli_real_escape_string($db_connection, $comment);
+                    $comment        = $_REQUEST['edit_comment'];
                     $edit_datetime  = date("Y-m-d H:i:s");
 
                     $comment_edit_query = mysqli_prepare($db_connection,

@@ -1,7 +1,8 @@
 <?php
 $user_id = $url[1];
 require("db_connection.php");
-include('mysql_secure_query_functions.php');
+include("mysql_secure_query_functions.php");
+include("website_functions.php");
 session_start();
 
 // Check does user id is not empty.
@@ -17,7 +18,7 @@ if(!empty($user_id)) {
 
     // Check does user exists.
     if($user_item) {
-        $username   = $user_item['username'];
+        $username   = newlines2br($user_item['username']);
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -57,12 +58,12 @@ if(!empty($user_id)) {
             <div class="user_info">
                 <p class="first_item">Email:</p>
                 <p class="second_item">
-                    <a href="mailto:<?php print $user_item['email'] ?>"><?php print $user_item['email'] ?></a>
+                    <a href="mailto:<?php print $user_item['email'] ?>"><?php print newlines2br($user_item['email']) ?></a>
                 </p>
             </div>
             <div class="user_info">
                 <p class="first_item">Bio:</p>
-<?php               print "<p class='second_item'>".$user_item['bio']."</p>";
+<?php               print "<p class='second_item'>".newlines2br($user_item['bio'])."</p>";
                 print "</div>";
 
             $article_query = mysqli_prepare($db_connection,
@@ -87,7 +88,7 @@ if(!empty($user_id)) {
                     foreach ($article_query as $article_item) {
                         print "<div class='article_list'>";
                             print "<p>
-                                        <a href='/article/" . $article_item['article_id'] . "'>" . $article_item['topic'] . "</a>
+                                        <a href='/article/" . $article_item['article_id'] . "'>" . newlines2br($article_item['topic']) . "</a>
                                       </p>";
                             if ($article_item['edit_datetime'] != null) {
                                 print "<p class='article_date'><b>Updated:</b> " . $article_item['edit_datetime'] . "</p>";

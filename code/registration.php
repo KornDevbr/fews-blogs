@@ -29,18 +29,13 @@
             exit();
         }
 
-        $username   = stripslashes($_REQUEST['username']); // Removes backslashes.
-        $username   = mysqli_real_escape_string($db_connection, $username); // Escapes special characters in a string.
-        $email      = stripslashes($_REQUEST['email']);
-        $email      = mysqli_real_escape_string($db_connection, $email);
-        $password   = stripslashes($_REQUEST['password']);
-        $password   = mysqli_real_escape_string($db_connection, $password);
+        $username   = $_REQUEST['username'];
+        $email      = $_REQUEST['email'];
+        $password   = $_REQUEST['password'];
         $password   = md5($password);
-        $cpassword  = stripslashes($_REQUEST['cpassword']);
-        $gender     = stripslashes($_REQUEST['gender']);
-        $gender     = mysqli_real_escape_string($db_connection, $gender);
-        $bio        = stripslashes($_REQUEST['bio']);
-        $bio        = mysqli_real_escape_string($db_connection, $bio);
+        $cpassword  = $_REQUEST['cpassword'];
+        $gender     = $_REQUEST['gender'];
+        $bio        = $_REQUEST['bio'];
         $create_datetime = date("Y-m-d H:i:s");
 
         // Checking does the given username already exist.
